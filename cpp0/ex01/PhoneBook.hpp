@@ -7,5 +7,5 @@ class PhoneBook
 
 	private:
 
-	Contact
+	Contact contact[7]
 };

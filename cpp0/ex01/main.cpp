@@ -2,6 +2,6 @@
 
 int	main()
 {
-	PhoneBook repertoire;
+	PhoneBook	dir;
 	
 }

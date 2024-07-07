@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include <iostream>
-#include <cctype>
 #include <string>
 
 int main(int ac, char **av)
@@ -20,19 +19,13 @@ int main(int ac, char **av)
     int 		j;
 	std::string	str;
 
-    i = 1;
     if(ac > 1)
     {
-        while(av[i])
+        for(i = 1; i < ac; i++) 
         {
-            j = 0;
 			str = av[i];
-            while(str[j])
-            {
+            for(j = 0; j < (int)str.length(); j++)
                 std::cout << (char)toupper(str[j]);
-                j++;
-            }
-            i++;
         }
         std::cout << std::endl;
     }

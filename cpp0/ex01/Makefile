@@ -5,6 +5,7 @@ NAME = MyPhoneBook
 
 SRCS = Contact.cpp \
 		PhoneBook.cpp \
+		utils.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

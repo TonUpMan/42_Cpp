@@ -1,8 +1,8 @@
 #include "HumanAClass.hpp"
 
-HumanA::HumanA(std::string name, Weapon weapon){
+HumanA::HumanA(std::string name, Weapon type){
     this->name = name;
-    this->weapon = weapon.getType();
+    weapon = type.getType();
 }
 HumanA::~HumanA(){}
 

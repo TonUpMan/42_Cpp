@@ -5,5 +5,5 @@ Weapon::Weapon(std::string weapon){
 }
 Weapon::~Weapon(){}
 
-std::string* Weapon::getType(void){return (&type);}
-void        Weapon::setType(std::string type){this->type = type;}
+std::string* Weapon::getType(void){return (&this->type);}
+void         Weapon::setType(std::string type){this->type = type;}

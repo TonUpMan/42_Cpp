@@ -13,8 +13,8 @@ class HumanB{
         void        setWeapon(Weapon weapon);
     
     private:
-        std::string name;
-        std::string* weapon;
+        std::string     name;
+        std::string*    weapon;
 };
 
 #endif

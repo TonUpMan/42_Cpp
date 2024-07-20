@@ -1,12 +1,14 @@
 #include "HumanBClass.hpp"
 
-HumanB::HumanB(){
-    name ="";
-    weapon = "";
+HumanB::HumanB(std::string name){
+    this->name = name;
+    weapon = 0;
 }
 HumanB::~HumanB(){}
 
-void    HumanB::attack(void){
+std::string HumanB::getWeapon(void){return (*weapon);}
+void        HumanB::setWeapon(Weapon weapon){this->weapon = weapon.getType();}
 
-    std::cout << name << " attacks with their " << weapon << std::endl;
+void    HumanB::attack(void){
+    std::cout << name << " attacks with their " << *weapon << std::endl;
 }

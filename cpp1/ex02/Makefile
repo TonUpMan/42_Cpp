@@ -4,6 +4,9 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = Hi
 
 SRCS = main.cpp \
+		HumanA.cpp \
+		HumanB.cpp \
+		Weapon.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

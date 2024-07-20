@@ -22,7 +22,7 @@ int only_space(std::string str){
 
 int get_index(int nbr, int full){
 
-    std::string input;
+    std::string search;
     int         index;
 
     if(full)
@@ -30,12 +30,13 @@ int get_index(int nbr, int full){
     while(1){
         
         std::cout << "select an index" << std::endl;
-        std::cin >> input;
-        if(input.length() != 1 || !isdigit(input[0])){
+        if(!getline(std::cin, search))
+            exit(0);
+        if(search.length() != 1 || !isdigit(search[0])){
             std::cout << "bad index, try again" << std::endl;
             continue ;
         }
-        std::stringstream ss(input);
+        std::stringstream ss(search);
         if(!(ss >> index) || index <= 0 || index > nbr){
             std::cout << "bad index, try again" << std::endl;
             continue ;

@@ -2,6 +2,7 @@
 # define PHONEBOOKCLASS_HPP
 
 #include "ContactClass.hpp"
+#include <cstring>
 #include <iostream>
 #include <iomanip>
 #include <cstdlib>

@@ -17,7 +17,7 @@ int main(int ac, char **av)
 {
     int 		i;
     int 		j;
-	std::string	str;
+	std::string	str = "";
 
     if(ac > 1)
     {

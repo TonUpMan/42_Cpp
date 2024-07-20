@@ -2,13 +2,13 @@
 
 HumanB::HumanB(std::string name){
     this->name = name;
-    weapon = 0;
+    ptr = NULL;
 }
 HumanB::~HumanB(){}
 
-std::string HumanB::getWeapon(void){return (*weapon);}
-void        HumanB::setWeapon(Weapon weapon){this->weapon = weapon.getType();}
+void        HumanB::setWeapon(Weapon weapon){ptr = &weapon;}
+std::string HumanB::getWeapon(void){return (ptr->getType());}
 
 void    HumanB::attack(void){
-    std::cout << name << " attacks with their " << *weapon << std::endl;
+    std::cout << name << " attacks with their " << ptr->getType() << std::endl;
 }

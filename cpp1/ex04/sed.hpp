@@ -3,5 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <fstream>
+#include <cstdlib>
 
 #endif

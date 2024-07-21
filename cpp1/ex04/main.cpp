@@ -4,29 +4,47 @@
 void    error_handle(void){
 
     std::cout << "something was wrong" << std::endl;
-    exit(0);
+    exit(1);
 }
 
-int is_file(char *file){
+void    check_arg(char **av){
 
-    
+    std::string str;
+    int         i;
+
+    for(i = 1; i < 4; i++){
+        str = av[i];
+        if(str.empty())
+            error_handle(); 
+    }
 }
 
-int handle_input(int ac, char **av){
+std::string replace_str(std::string s1, std::string s2, std::string str){
 
-    int i;
+    std::string result;
+    size_t      pos, save;
 
-    if(!is_file(av[1]))
-        error_handle();
-    for(i = 2; i < ac; i++){
-
+    while(str[pos]){
+        save = 0;
+        pos = str.find(s1);
     }
 }
 
 int main(int ac, char **av){
 
-    if(ac != 4){
-        handle_input(ac, av);
-    }    
-    return (0);
+    std::fstream    file;
+    size_t          pos = 0;
+    std::string     str, s1, s2;
+
+    if(ac == 4){
+        check_arg(av);
+        file.open(av[1]);
+        s1 = av[2];
+        s2 = av[3];
+        while(getline(file, str)){
+            pos = str.find(s1);
+            if(pos)
+                str = replace_str(s1, s2, str);
+        }
+    }
 }

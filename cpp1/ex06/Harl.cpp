@@ -9,18 +9,31 @@ void Harl::complain(std::string level){
     int     i = 0;
     std::string lvl[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
     void    (Harl::*fct[])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-    
+
     while(i < 4)
     {
         if(lvl[i] == level)
-        {
-            (this->*fct[i])();
-            return ;
-        }
+            break ;
         i++;
     }
-    std::cout << "[harl]" << std::endl;
-    std::cout << "sorry, there is only 4 levels" << std::endl; 
+    switch(i)
+    {
+        case 0:
+            (this->*fct[0])();
+            // Fall through
+        case 1:
+            (this->*fct[1])();
+            // Fall through
+        case 2:
+            (this->*fct[2])();
+            // Fall through
+        case 3:    
+            (this->*fct[3])();
+            break;
+        case 4:
+            std::cout << "[NO FILTER]" << std::endl;
+            std::cout << "Without a selected filter, this can be dangerous!" << std::endl;
+    }
 }
 
 void Harl::debug(void){

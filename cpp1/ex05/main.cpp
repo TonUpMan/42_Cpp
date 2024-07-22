@@ -3,12 +3,12 @@
 
 int main(void){
     
-    std::string input;
     Harl        harl;
 
-    std::cout << "choose a level: DEBUG, INFO, WARNING, ERROR" << std::endl;
-    if(!getline(std::cin, input))
-        return (0);
-    harl.complain(input);
+    harl.complain("DEBUG");
+    harl.complain("INFO");
+    harl.complain("WARNING");
+    harl.complain("ERROR");
+    harl.complain("");
     return (0);
 }

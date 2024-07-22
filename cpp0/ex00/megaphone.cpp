@@ -15,16 +15,14 @@
 
 int main(int ac, char **av)
 {
-    int 		i;
-    int 		j;
 	std::string	str = "";
 
     if(ac > 1)
     {
-        for(i = 1; i < ac; i++) 
+        for(int i = 1; i < ac; i++) 
         {
 			str = av[i];
-            for(j = 0; j < (int)str.length(); j++)
+            for(int j = 0; j < (int)str.length(); j++)
                 std::cout << (char)toupper(str[j]);
         }
         std::cout << std::endl;

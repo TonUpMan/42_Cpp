@@ -1,4 +1,4 @@
-#include "WeaponClass.hpp"
+#include "Weapon.hpp"
 
 Weapon::Weapon(std::string weapon){
     this->type = weapon;

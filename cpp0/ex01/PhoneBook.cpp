@@ -1,4 +1,4 @@
-#include "PhoneBookClass.hpp"
+#include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook(){
     nbr_contact = 0;
@@ -19,14 +19,13 @@ void    PhoneBook::print_contact(int i){
 
 void    PhoneBook::print_list(){
 
-    int i;
     std::string str;
 
     std::cout << "|----------|------------|------------|------------|" << std::endl;
     std::cout << std::setw(10) << "index" << " | " << std::setw(10) << "firstname" << " | ";
     std::cout << std::setw(10) << "lastname" << " | " << std::setw(10) << "nickname" << " | " << std::endl;
     std::cout << "|----------|------------|------------|------------|" << std::endl;
-    for(i = 0; i < 8; i++){
+    for(int i = 0; i < 8; i++){
 
         std::cout << std::setw(10) << (i + 1) << " | ";
         std::cout << std::setw(10) << reduce_len(contacts[i].get_first()) << " | ";

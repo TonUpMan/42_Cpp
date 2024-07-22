@@ -1,4 +1,4 @@
-#include "HumanAClass.hpp"
+#include "HumanA.hpp"
 
 HumanA::HumanA(std::string name, Weapon& type) : name(name), ref(type) {}
 HumanA::~HumanA(){}

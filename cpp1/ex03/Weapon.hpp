@@ -1,5 +1,5 @@
-#ifndef WEAPONCLASS_HPP
-# define WEAPONCLASS_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
 #include <string>
 #include <iostream>

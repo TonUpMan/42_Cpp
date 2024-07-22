@@ -1,6 +1,6 @@
 
-#include "HumanAClass.hpp"
-#include "HumanBClass.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main(){
 

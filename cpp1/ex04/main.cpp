@@ -1,5 +1,9 @@
 
-#include "sed.hpp"
+#include <iostream>
+#include <cstring>
+#include <fstream>
+#include <cstdlib>
+#include <sstream>
 
 void    error_handle(void){
 
@@ -10,41 +14,45 @@ void    error_handle(void){
 void    check_arg(char **av){
 
     std::string str;
-    int         i;
 
-    for(i = 1; i < 4; i++){
+    for(int i = 1; i < 4; i++){
         str = av[i];
         if(str.empty())
             error_handle(); 
     }
 }
 
-std::string replace_str(std::string s1, std::string s2, std::string str){
-
-    std::string result;
-    size_t      pos, save;
-
-    while(str[pos]){
-        save = 0;
-        pos = str.find(s1);
-    }
-}
-
 int main(int ac, char **av){
 
-    std::fstream    file;
-    size_t          pos = 0;
+    std::fstream    fin, fout;
+    int             pos = 0;
     std::string     str, s1, s2;
 
-    if(ac == 4){
+    if(ac == 4)
+    {
         check_arg(av);
-        file.open(av[1]);
+        str = av[1];
+        fin.open(str.c_str());
+        str.append(".replace");
+        fout.open(str.c_str(), std::fstream::out | std::fstream::app);
         s1 = av[2];
         s2 = av[3];
-        while(getline(file, str)){
+        while(getline(fin, str))
+        {
             pos = str.find(s1);
-            if(pos)
-                str = replace_str(s1, s2, str);
+            if(pos > 0)
+            {
+                while(1)
+                {
+                    pos = str.find(s1);
+                    if(pos == -1)
+                        break ;
+                    str.erase(pos, s1.length());
+                    str.insert(pos, s2);
+                }
+            }
+            fout << str << std::endl;
         }
     }
+    return (0);
 }

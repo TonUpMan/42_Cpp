@@ -1,4 +1,4 @@
-#include "PhoneBookClass.hpp"
+#include "PhoneBook.hpp"
 
 std::string reduce_len(std::string str){
 
@@ -10,9 +10,7 @@ std::string reduce_len(std::string str){
 
 int only_space(std::string str){
 
-    size_t i;
-
-    for(i = 0; i < str.length(); i++){
+    for(size_t i = 0; i < str.length(); i++){
 
         if(str[i] != 32)
             return (1);
@@ -49,11 +47,9 @@ int get_index(int nbr, int full){
 
 int check_name(std::string str){
 
-    size_t i;
-
     if (!str.length() || !only_space(str))
         return (0);
-    for(i = 0; i < str.length(); i++){
+    for(size_t i = 0; i < str.length(); i++){
         if(!isalpha(str[i]) && str[i] != 32)
             return (0);
     }
@@ -62,11 +58,9 @@ int check_name(std::string str){
 
 int check_nick(std::string str){
 
-    size_t i;
-
     if (!str.length() || !only_space(str))
         return (0);
-    for(i = 0; i < str.length(); i++){
+    for(size_t i = 0; i < str.length(); i++){
         if(!isalnum(str[i]) && str[i] != 32)
             return (0);
     }
@@ -75,11 +69,9 @@ int check_nick(std::string str){
 
 int check_number(std::string str){
 
-    size_t i;
-
     if (!str.length() || !only_space(str) || str.length() != 10)
         return (0);
-    for(i = 0; i < str.length(); i++){
+    for(size_t i = 0; i < str.length(); i++){
         if(!isdigit(str[i]))
             return (0);
     }
@@ -88,11 +80,9 @@ int check_number(std::string str){
 
 int check_secret(std::string str){
 
-    size_t i;
-
     if (!str.length() || !only_space(str))
         return (0);
-    for(i = 0; i < str.length(); i++){
+    for(size_t i = 0; i < str.length(); i++){
         if(!isprint(str[i]))
             return (0);
     }

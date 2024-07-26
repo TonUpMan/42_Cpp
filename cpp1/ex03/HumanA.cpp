@@ -3,7 +3,7 @@
 HumanA::HumanA(std::string name, Weapon& type) : name(name), ref(type) {}
 HumanA::~HumanA(){}
 
-std::string HumanA::getWeapon(void){return(ref.getType());}
+std::string HumanA::getWeapon(void) const{return(ref.getType());}
 
 void    HumanA::attack(void){
    

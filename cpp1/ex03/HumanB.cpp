@@ -7,7 +7,7 @@ HumanB::HumanB(std::string name){
 HumanB::~HumanB(){}
 
 void        HumanB::setWeapon(Weapon& weapon){ptr = &weapon;}
-std::string HumanB::getWeapon(void){return (ptr->getType());}
+std::string HumanB::getWeapon(void) const{return (ptr->getType());}
 
 void    HumanB::attack(void){
   

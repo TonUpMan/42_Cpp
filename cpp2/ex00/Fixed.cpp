@@ -1,7 +1,9 @@
 
 #include "Fixed.hpp"
 
-Fixed::Fixed(void){
+const int Fixed::bit = 8;
+
+Fixed::Fixed(void) {
     
     std::cout << "Default constructor called" << std::endl;
     nbr = 0;

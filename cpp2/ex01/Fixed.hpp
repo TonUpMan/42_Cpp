@@ -25,6 +25,6 @@ class Fixed{
         static const int    bit;
 };
 
-const int Fixed::bit = 8;
+std::ostream &  operator<<(std::ostream & o, Fixed const & cpy);
 
 #endif

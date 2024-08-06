@@ -12,8 +12,20 @@ class Fixed{
         Fixed(const float nb);
         Fixed(Fixed const & cpy);
         ~Fixed(void);
+
         Fixed & operator=(Fixed const & cpy);
-        
+        Fixed & operator<(Fixed const & cpy);
+        Fixed & operator>(Fixed const & cpy);
+        Fixed & operator<=(Fixed const & cpy);
+        Fixed & operator>=(Fixed const & cpy);
+        Fixed & operator==(Fixed const & cpy);
+        Fixed & operator!=(Fixed const & cpy);
+
+        Fixed & operator+(Fixed const & cpy);
+        Fixed & operator-(Fixed const & cpy);
+        Fixed & operator*(Fixed const & cpy);
+        Fixed & operator/(Fixed const & cpy);
+
         int     getRawBits(void) const;
         void    setRawBits(int const raw);
         float   toFloat( void ) const;

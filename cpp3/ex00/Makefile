@@ -1,10 +1,10 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Fixed1
+NAME = claptrap
 
 SRCS = main.cpp \
-		Fixed.cpp \
+		ClapTrap.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Fixed1
+NAME = Fixed2
 
 SRCS = main.cpp \
 		Fixed.cpp \

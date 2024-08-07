@@ -14,7 +14,7 @@ Fixed::Fixed(const int nb){
 
 Fixed::Fixed(const float nb){
     std::cout << "float constructor called" << std::endl;
-    nbr = (nb) * (1 << bit) + 1;
+    nbr = (nb) * (1 << bit);
 }
 
 Fixed::Fixed(Fixed const & cpy){
@@ -38,8 +38,66 @@ std::ostream &  operator<<(std::ostream & o, Fixed const & cpy){
     return(o);
 }
 
-int Fixed::getRawBits(void) const{return (nbr);}
-void Fixed::setRawBits(int const raw){nbr = raw;}
+Fixed   Fixed::operator+(Fixed const & cpy){return(Fixed(toFloat()+cpy.toFloat()));}
+Fixed   Fixed::operator-(Fixed const & cpy){return(Fixed(toFloat()-cpy.toFloat()));}
+Fixed   Fixed::operator*(Fixed const & cpy){return(Fixed(toFloat()*cpy.toFloat()));}
+Fixed   Fixed::operator/(Fixed const & cpy){return(Fixed(toFloat()/cpy.toFloat()));}
+
+Fixed   &Fixed::operator++(){
+    nbr++;
+    return(*this);
+}
+
+Fixed   Fixed::operator++(int){
+
+    Fixed   tmp(*this);
+    operator++();
+    return(tmp);
+}
+
+Fixed   &Fixed::operator--(){
+    nbr--;
+    return(*this);
+}
+
+Fixed   Fixed::operator--(int){
+    Fixed   tmp(*this);
+    operator--();
+    return(tmp);
+}
+
+bool    Fixed::operator<(Fixed const & cpy) const{return(toFloat() < cpy.toFloat());};
+bool    Fixed::operator>(Fixed const & cpy) const{return(toFloat() > cpy.toFloat());};
+bool    Fixed::operator<=(Fixed const & cpy) const{return(toFloat() <= cpy.toFloat());};
+bool    Fixed::operator>=(Fixed const & cpy) const{return(toFloat() >= cpy.toFloat());};
+bool    Fixed::operator==(Fixed const & cpy) const{return(toFloat() == cpy.toFloat());};
+bool    Fixed::operator!=(Fixed const & cpy) const{return(toFloat() != cpy.toFloat());};
+
+Fixed   Fixed::min(const Fixed &a, const Fixed &b){
+    if(a > b)
+        return(b);
+    return(a);
+}
+
+Fixed   Fixed::max(const Fixed &a, const Fixed &b){
+    if(a > b)
+        return(a);
+    return(b);
+}
+
+Fixed   Fixed::min(Fixed &a, Fixed &b){
+    if(a < b)
+        return(a);
+    return(b);
+}
+Fixed   Fixed::max(Fixed &a, Fixed &b){
+    if(a < b)
+        return(b);
+    return(a);
+}
+
+int     Fixed::getRawBits(void) const{return (nbr);}
+void    Fixed::setRawBits(int const raw){nbr = raw;}
 float   Fixed::toFloat(void) const{return((float)nbr / (1 << bit));}
 int     Fixed::toInt( void ) const{return(nbr >> bit);}
 

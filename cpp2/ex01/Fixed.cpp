@@ -14,7 +14,7 @@ Fixed::Fixed(const int nb){
 
 Fixed::Fixed(const float nb){
     std::cout << "float constructor called" << std::endl;
-    nbr = (nb) * (1 << bit) + 1;
+    nbr = (nb) * (1 << bit);
 }
 
 Fixed::Fixed(Fixed const & cpy){

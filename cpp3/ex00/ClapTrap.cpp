@@ -63,6 +63,7 @@ void ClapTrap::beRepaired(unsigned int amount){
         std::cout << " to get back " << amount;
         std::cout << " Hp" << std::endl;
         Hit += amount;
+        Energy--;
     }
     else
        std::cout << "Energy too low" << std::endl; 

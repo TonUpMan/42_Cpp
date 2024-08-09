@@ -3,6 +3,7 @@
 
 ClapTrap::ClapTrap(void){
     std::cout << "default constructor called" << std::endl;
+    name = "john doe";
     Hit = 10;
     Energy = 10;
     Attack = 0;

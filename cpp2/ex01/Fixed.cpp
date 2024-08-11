@@ -5,6 +5,7 @@ const int Fixed::bit = 8;
 
 Fixed::Fixed(void){
     std::cout << "Default constructor called" << std::endl;
+    nbr = 0;
 }
 
 Fixed::Fixed(const int nb){
@@ -14,7 +15,7 @@ Fixed::Fixed(const int nb){
 
 Fixed::Fixed(const float nb){
     std::cout << "float constructor called" << std::endl;
-    nbr = (nb) * (1 << bit);
+    nbr = roundf(nb * (1 << bit));
 }
 
 Fixed::Fixed(Fixed const & cpy){

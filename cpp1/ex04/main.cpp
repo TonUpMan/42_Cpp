@@ -6,7 +6,7 @@
 /*   By: qdeviann <qdeviann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/10 08:28:58 by qdeviann          #+#    #+#             */
-/*   Updated: 2024/08/10 17:05:54 by qdeviann         ###   ########.fr       */
+/*   Updated: 2024/08/11 09:35:58 by qdeviann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,19 @@ void    error_handle(std::string str){
     return ;
 }
 
-void    check_arg(char **av){
+int    check_arg(char **av){
 
     std::string str;
 
     for(int i = 1; i < 4; i++){
         str = av[i];
         if(str.empty())
-            error_handle("empty argument"); 
+        {
+            error_handle("empty argument");
+            return(0); 
+        }
     }
+    return (1);
 }
 
 int main(int ac, char **av){
@@ -41,7 +45,8 @@ int main(int ac, char **av){
 
     if(ac == 4)
     {
-        check_arg(av);
+        if(!check_arg(av))
+            return (0);
         str = av[1];
         fin.open(str.c_str());
         if(!fin.is_open())
@@ -64,12 +69,12 @@ int main(int ac, char **av){
         {
             while(pos < (int)str.length())
             {
-                pos += str.find(s1);
-                if(pos == -1)
-                    break ;
+                pos = str.find(s1, pos);
+                if(pos < 0)
+                    break;
                 str.erase(pos, s1.length());
                 str.insert(pos, s2);
-                pos += s2.length();
+                pos++;
             }
         }
         fout << str << std::endl;

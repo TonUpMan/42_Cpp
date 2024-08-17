@@ -1,29 +1,23 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void){
-    std::cout << "default constructor called" << std::endl;
-    name = "john doe";
-    Hit = 10;
-    Energy = 10;
-    Attack = 0;
-}
-
 ClapTrap::ClapTrap(std::string name){
-    std::cout << "string constructor called" << std::endl;
+    if(name.empty())
+        name = "Clap Doe";
+    std::cout << "ClapTrap " << name << " was construted" << std::endl;
     this->name = name;
     Hit = 10;
     Energy = 10;
     Attack = 0;
 }
 
-ClapTrap::ClapTrap(ClapTrap & cpy){
-    std::cout << "copy constructor called" << std::endl;    
+ClapTrap::ClapTrap(const ClapTrap & cpy){
+    std::cout << "ClapTrap " << cpy.getname() << " was constructed(copy)" << std::endl;    
     *this = cpy;
 }
 
 ClapTrap::~ClapTrap(){
-    std::cout << "destructor called" << std::endl;
+    std::cout << "ClapTrap " << this->getname() << " was destructed" << std::endl;
 }
 
 ClapTrap & ClapTrap::operator=(ClapTrap const & cpy){

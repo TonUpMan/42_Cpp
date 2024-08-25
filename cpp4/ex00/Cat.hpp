@@ -8,11 +8,11 @@ class Cat : public Animal{
     public:
         Cat(void);
         Cat(const Cat & cpy);
-        ~Cat();
+        virtual ~Cat();
         Cat & operator=(Cat const & cpy);
-        std::string getType(void) const;
-        std::string getSound(void) const;
-        void        makeSound(void); 
+        
+        std::string     getType(void) const;
+        virtual void    makeSound(void) const; 
 };
 
 #endif

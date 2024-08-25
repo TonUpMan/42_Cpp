@@ -50,7 +50,7 @@ void ClapTrap::takeDamage(unsigned int amount){
     std::cout << " damage" << std::endl;
     Hit -= amount;
     if(Hit <= 0)
-        std::cout << this->getname() << " was K.O" << std::endl;  
+        std::cout << this->getname() << " is K.O" << std::endl;  
 }
 
 void ClapTrap::beRepaired(unsigned int amount){

@@ -1,6 +1,6 @@
 #include "Animal.hpp"
 
-Animal::Animal(void) : type(""){}
+Animal::Animal() : type("animal"){}
 
 Animal::Animal(const Animal & cpy){
     *this = cpy;
@@ -16,6 +16,6 @@ Animal & Animal::operator=(Animal const &cpy){
 
 std::string Animal::getType() const{return(type);}
 
-void    makeSound(void){
-    
+void    Animal::makeSound(void) const{
+    std::cout << "sound of animal" << std::endl;
 }

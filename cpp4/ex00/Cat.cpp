@@ -1,6 +1,8 @@
 #include "Cat.hpp"
 
-Cat::Cat(void) : type("Cat"){}
+Cat::Cat(void) : Animal(){
+    type = "Cat";
+}
 
 Cat::Cat(const Cat & cpy){
     *this = cpy;
@@ -16,6 +18,6 @@ Cat & Cat::operator=(Cat const &cpy){
 
 std::string Cat::getType() const{return(type);}
 
-void    makeSound(void){
-    
+void    Cat::makeSound(void) const{
+    std::cout << "miaou!" << std::endl;
 }

@@ -1,7 +1,7 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Animals
+NAME = Burn_me
 
 SRCS = main.cpp \
 		Animal.cpp \

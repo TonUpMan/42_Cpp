@@ -11,9 +11,9 @@ class Brain{
         ~Brain();
         Brain & operator=(Brain const & cpy);
 
-        std::string *getIdeas() const;
+        std::string getIdeas(int i) const;
     
-    protected :
+    private :
         std::string ideas[100];
 };
 

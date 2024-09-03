@@ -1,13 +1,16 @@
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap(std::string name) : ClapTrap(name){
-    if (name.empty())
-        name = "Frag Doe";
+FragTrap::FragTrap(void) : ClapTrap(){
+    std::cout << "FragTrap was constructed" << std::endl;
+    name = "void";
+}
+
+FragTrap::FragTrap(std::string & name) : ClapTrap(name){
     std::cout << "FragTrap " << name << " was constructed" << std::endl;
     this->name = name;
     Hit = 100;
-    Energy = 50;
-    Attack = 20;
+    Energy = 100;
+    Attack = 30;
 }
 
 FragTrap::FragTrap(FragTrap & cpy) : ClapTrap(cpy){
@@ -44,5 +47,5 @@ void FragTrap::attack(const std::string& target){
 }
 
 void    FragTrap::highFivesGuys(void){
-    std::cout << "Wouhou, give me high five bruh!!" << std::endl;
+    std::cout << "Wouhou, give me high five dude!!" << std::endl;
 }

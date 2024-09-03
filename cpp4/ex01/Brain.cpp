@@ -25,6 +25,6 @@ Brain & Brain::operator=(Brain const & cpy){
     return(*this);
 }
 
-std::string Brain::getIdeas(int i) const{
+std::string Brain::getIdeas(int i) const{   
     return(ideas[i]);
 }

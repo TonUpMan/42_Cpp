@@ -1,10 +1,13 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name){
-    if (name.empty())
-        name = "Scav Doe";
+ScavTrap::ScavTrap(void) : ClapTrap(){
+    std::cout << "ScavTrap was constructed" << std::endl;
+    name = "void";
+    guard_mode = 0;
+}
+
+ScavTrap::ScavTrap(std::string & name) : ClapTrap(name){
     std::cout << "ScavTrap " << name << " was constructed" << std::endl;
-    this->name = name;
     Hit = 100;
     Energy = 50;
     Attack = 20;
@@ -45,13 +48,14 @@ void ScavTrap::attack(const std::string& target){
 }
 
 void    ScavTrap::guardGate(void){
-    if(guard_mode){
-        std::cout << name << " is no longer in Gate keeper mode" << std::endl;
-        guard_mode = 0;
+    if(Energy && Hit){
+        if(guard_mode){
+            std::cout << name << " is no longer in Gate keeper mode" << std::endl;
+            guard_mode = 0;
+        }
+        else{
+            std::cout << name << " is now in Gate keeper mode" << std::endl;
+            guard_mode = 1;
+        }
     }
-    else{
-        std::cout << name << " is now in Gate keeper mode" << std::endl;
-        guard_mode = 1;
-    }
-
 }

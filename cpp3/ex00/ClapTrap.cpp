@@ -1,11 +1,13 @@
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name){
-    if(name.empty())
-        name = "Clap Doe";
-    std::cout << "ClapTrap " << name << " was construted" << std::endl;
-    this->name = name;
+ClapTrap::ClapTrap(void){
+    std::cout << "ClapTrap was constructed" << std::endl;
+    name = "void";
+}
+
+ClapTrap::ClapTrap(std::string & name) : name(name) {
+    std::cout << "ClapTrap " << name << " was constructed" << std::endl;
     Hit = 10;
     Energy = 10;
     Attack = 0;
@@ -40,7 +42,7 @@ void ClapTrap::attack(const std::string& target){
         std::cout << " points of damage!" << std::endl;
         Energy--;
     }
-    else
+    if(!Energy)
         std::cout << "Energy too low" << std::endl;
 }
 
@@ -48,7 +50,11 @@ void ClapTrap::takeDamage(unsigned int amount){
     std::cout << "ClapTrap " << name;
     std::cout << " received " << amount;
     std::cout << " damage" << std::endl;
-    Hit -= amount;  
+    Hit -= amount;
+    if(Hit <= 0){
+        Hit = 0;
+        std::cout << "ClapTrap " << name << " died" << std::endl;
+    }  
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
@@ -60,8 +66,8 @@ void ClapTrap::beRepaired(unsigned int amount){
         Hit += amount;
         Energy--;
     }
-    else
-       std::cout << "Energy too low" << std::endl; 
+    if (!Energy)
+        std::cout << "Energy too low" << std::endl; 
 }
 
 std::string ClapTrap::getname(void) const{return(name);}

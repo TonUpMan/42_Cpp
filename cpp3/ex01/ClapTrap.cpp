@@ -42,7 +42,7 @@ void ClapTrap::attack(const std::string& target){
         std::cout << " points of damage!" << std::endl;
         Energy--;
     }
-    if(!Energy)
+    if(Energy <= 0)
         std::cout << "Energy too low" << std::endl;
 }
 
@@ -66,7 +66,7 @@ void ClapTrap::beRepaired(unsigned int amount){
         Hit += amount;
         Energy--;
     }
-    if (!Energy)
+    if(Energy <= 0)
         std::cout << "Energy too low" << std::endl; 
 }
 

@@ -43,7 +43,7 @@ void ScavTrap::attack(const std::string& target){
         std::cout << " points of damage!" << std::endl;
         Energy--;
     }
-    else
+    if(Energy <= 0)
         std::cout << "Energy too low" << std::endl;
 }
 

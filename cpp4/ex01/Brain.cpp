@@ -25,6 +25,14 @@ Brain & Brain::operator=(Brain const & cpy){
     return(*this);
 }
 
-std::string Brain::getIdeas(int i) const{   
+std::string Brain::getIdeas(int i) const{
+    if(i >= 100 && i < 0)
+        return(NULL);   
     return(ideas[i]);
+}
+
+void    Brain::setIdea(std::string & idea, int index){
+    if(index >= 100 && index < 0)
+        return; 
+    ideas[index] = idea; 
 }

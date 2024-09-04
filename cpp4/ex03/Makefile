@@ -1,15 +1,13 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = Burn_me
+NAME = materia
 
 SRCS = main.cpp \
-		Animal.cpp \
-		Cat.cpp \
-		Dog.cpp \
-		WrongAnimal.cpp \
-		WrongCat.cpp \
-		Brain.cpp \
+		AMateria.cpp \
+		Cure.cpp \
+		Ice.cpp \
+		ICharacter.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

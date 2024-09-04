@@ -1,0 +1,1 @@
+Cure : "* heals <name>’s wounds *"

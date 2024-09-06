@@ -8,17 +8,17 @@
 class AMateria{
     
     public:
-        AMateria(void);
         AMateria(std::string const & type);
-        AMateria(const AMateria & cpy);
         virtual ~AMateria(void);
-        AMateria & operator=(AMateria const & cpy);
         
         std::string const & getType(void) const;
         virtual AMateria* clone(void) const = 0;
         virtual void use(ICharacter& target);
     
     protected:
+        AMateria(void);
+        AMateria(const AMateria & cpy);
+        AMateria & operator=(AMateria const & cpy);
         std::string type;
 };
 

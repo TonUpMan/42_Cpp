@@ -22,3 +22,12 @@ AMateria & AMateria::operator=(AMateria const & cpy){
     }
     return (*this);
 }
+
+std::string const & AMateria::getType() const{return(type);}
+
+AMateria* AMaterie::clone(void) const{
+    return(new AMateria);
+}
+void AMaterie::use(ICharacter& target){
+
+}

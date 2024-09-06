@@ -1,5 +1,3 @@
-//Ice : "* shoots an ice bolt at <name> *"
-
 #include "Ice.hpp"
 
 Ice::Ice(void) : AMateria(){
@@ -19,4 +17,14 @@ Ice & Ice::operator=(Ice const & cpy){
     if(this != &cpy)
         this->type = cpy.type;
     return (*this);
+}
+
+std::string const & Ice::getType(void) const{return(type);}
+
+Ice* Ice::clone(void) const{
+    return();
+}
+
+void use(ICharacter& target){
+    std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

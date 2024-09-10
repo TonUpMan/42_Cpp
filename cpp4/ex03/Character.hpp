@@ -10,7 +10,7 @@ class Character : public ICharacter{
         Character(std::string & name);
         Character(Character const & cpy);
         Character const & operator=(Character const & cpy);
-        ~Character();
+        virtual~Character();
         
         std::string const & getName() const;
         void equip(AMateria* m);
@@ -19,7 +19,9 @@ class Character : public ICharacter{
 
     protected:
         AMateria    *inventory[4];
+        AMateria    *floor[8];
         int         nbr_invent;
+        int         nbr_trash;
         std::string name;
 
 

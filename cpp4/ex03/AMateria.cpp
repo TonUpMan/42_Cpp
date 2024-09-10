@@ -9,6 +9,7 @@ AMateria const & AMateria::operator=(AMateria const & cpy){
     if(this != &cpy){
         type = cpy.type;
     }
+    return(*this);
 }
 
 AMateria::~AMateria(void){}

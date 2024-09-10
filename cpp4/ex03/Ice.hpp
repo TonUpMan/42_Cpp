@@ -4,17 +4,17 @@
 #include "AMateria.hpp"
 
 class Ice : public AMateria{
-    
+
     public:
-        Ice(void);
         Ice(std::string const & type);
-        Ice(const Ice & cpy);
-        virtual ~Ice(void);
-        Ice & operator=(Ice const & cpy);
+        Ice(Ice const & cpy);
+        Ice const & operator=(Ice const & cpy);
+        ~Ice(void);
         
         std::string const & getType(void) const;
-        virtual Ice* clone(void) const = 0;
+        virtual AMateria* clone(void) const;
         virtual void use(ICharacter& target);
+
 };
 
 #endif

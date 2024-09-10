@@ -5,9 +5,10 @@ NAME = materia
 
 SRCS = main.cpp \
 		AMateria.cpp \
+		MateriaSource.cpp \
 		Cure.cpp \
 		Ice.cpp \
-		ICharacter.cpp \
+		Character.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -3,12 +3,14 @@
 
 #include <string>
 #include <iostream>
-#include "ICharacter.hpp"
+#include "Character.hpp"
 
-class AMateria{
-    
+class AMateria
+{
     public:
         AMateria(std::string const & type);
+        AMateria(AMateria const & cpy);
+        AMateria const & operator=(AMateria const & cpy);
         virtual ~AMateria(void);
         
         std::string const & getType(void) const;
@@ -16,9 +18,6 @@ class AMateria{
         virtual void use(ICharacter& target);
     
     protected:
-        AMateria(void);
-        AMateria(const AMateria & cpy);
-        AMateria & operator=(AMateria const & cpy);
         std::string type;
 };
 

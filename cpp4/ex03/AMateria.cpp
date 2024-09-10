@@ -1,33 +1,20 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria(void){
-    std::cout << "default constructeur called" << std::endl;
-}
 
-AMateria::AMateria(std::string const & type) : type(type){
-    std::cout << "Materia "<< type << " constructed" << std::endl;
-}
+AMateria::AMateria(std::string const & type) : type(type){}
 
-AMateria::AMateria(const AMateria & cpy){
-    *this = cpy;
-}
+AMateria::AMateria(AMateria const & cpy){*this = cpy;}
 
-AMateria::~AMateria(void){
-    std::cout << "Materia "<< type << " destructed" << std::endl;
-}
-
-AMateria & AMateria::operator=(AMateria const & cpy){
+AMateria const & AMateria::operator=(AMateria const & cpy){
     if(this != &cpy){
-        this->type = cpy.type;
+        type = cpy.type;
     }
-    return (*this);
 }
 
-std::string const & AMateria::getType() const{return(type);}
+AMateria::~AMateria(void){}
 
-AMateria* AMaterie::clone(void) const{
-    return(new AMateria);
-}
-void AMaterie::use(ICharacter& target){
+std::string const & AMateria::getType(void) const{return(type);}
 
+void AMateria::use(ICharacter& target){
+    std::cout << target.getName() << " use " << type << std::endl;
 }

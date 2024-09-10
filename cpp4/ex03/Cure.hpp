@@ -4,18 +4,17 @@
 #include "AMateria.hpp"
 
 class Cure : public AMateria{
-    
+
     public:
         Cure(std::string const & type);
-        Cure(const Cure & cpy);
-        virtual ~Cure(void);
-        Cure & operator=(Cure const & cpy);
+        Cure(Cure const & cpy);
+        Cure const & operator=(Cure const & cpy);
+        ~Cure(void);
         
         std::string const & getType(void) const;
-        virtual Cure* clone(void) const = 0;
+        virtual AMateria* clone(void) const;
         virtual void use(ICharacter& target);
-    private:
-        Cure(void);
+
 };
 
 #endif

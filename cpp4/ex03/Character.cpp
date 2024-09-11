@@ -16,7 +16,7 @@ Character const & Character::operator=(Character const & cpy){
         this->nbr_invent = cpy.nbr_invent;
         if(nbr_invent){
             for(int i = 0; i < nbr_invent; i++){
-                this->inventory[i] = cpy.inventory[i];
+                this->inventory[i] = cpy.inventory[i]->clone();
             }
         }
     }
@@ -35,10 +35,10 @@ void Character::equip(AMateria* m){
         inventory[nbr_invent] = m;
         if(inventory[nbr_invent])
             std::cout << inventory[nbr_invent]->getType() << " add to inventory" << std::endl;
-        else   
-            std::cout << "t'es nul" << std::endl;
         nbr_invent++;
+        return;
     }
+    std::cout << "Inventory is full" << std::endl;
 }
 
 void Character::unequip(int idx){
@@ -46,7 +46,7 @@ void Character::unequip(int idx){
         return ;
     }
     if(nbr_trash == 7){
-        std::cout << "the ground is full!" << std::endl;
+        std::cout << "the ground is full! you cannot unequip" << std::endl;
         return ;
     }
     floor[nbr_trash] = inventory[idx];

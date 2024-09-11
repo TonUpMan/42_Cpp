@@ -6,6 +6,7 @@
 class Ice : public AMateria{
 
     public:
+        Ice(void);
         Ice(std::string const & type);
         Ice(Ice const & cpy);
         Ice const & operator=(Ice const & cpy);

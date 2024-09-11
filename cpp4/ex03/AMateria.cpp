@@ -1,7 +1,12 @@
 #include "AMateria.hpp"
 
+AMateria::AMateria(void){
+    std::cout << "AMateria construct" << std::endl;
+}
 
-AMateria::AMateria(std::string const & type) : type(type){}
+AMateria::AMateria(std::string const & type) : type(type){
+    std::cout << "AMateria construct" << std::endl;
+}
 
 AMateria::AMateria(AMateria const & cpy){*this = cpy;}
 

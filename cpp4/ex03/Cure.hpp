@@ -6,6 +6,7 @@
 class Cure : public AMateria{
 
     public:
+        Cure(void);
         Cure(std::string const & type);
         Cure(Cure const & cpy);
         Cure const & operator=(Cure const & cpy);

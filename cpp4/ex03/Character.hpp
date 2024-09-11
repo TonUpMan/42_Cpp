@@ -1,13 +1,14 @@
 #ifndef CHARACTER_HPP
-#define CHARACTER_HPP
+# define CHARACTER_HPP
 
 #include "ICharacter.hpp"
-#include "MateriaSource.hpp"
+//#include "MateriaSource.hpp"
+#include "AMateria.hpp"
 
 class Character : public ICharacter{
 
     public:
-        Character(std::string & name);
+        Character(std::string const & name);
         Character(Character const & cpy);
         Character const & operator=(Character const & cpy);
         virtual~Character();

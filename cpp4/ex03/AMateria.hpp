@@ -3,11 +3,14 @@
 
 #include <string>
 #include <iostream>
-#include "Character.hpp"
+#include "ICharacter.hpp"
+
+class ICharacter;
 
 class AMateria
 {
     public:
+        AMateria(void);
         AMateria(std::string const & type);
         AMateria(AMateria const & cpy);
         AMateria const & operator=(AMateria const & cpy);

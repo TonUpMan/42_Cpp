@@ -3,11 +3,13 @@
 Ice::Ice() : AMateria(){
     std::cout << "Ice construct" << std::endl;
     type = "ice";
+    taken = 0;
 }
 
 Ice::Ice(std::string const & type) : AMateria(type){
     std::cout << "Ice construct" << std::endl;
     this->type = type;
+    taken = 0;
 }
 
 Ice::Ice(Ice const & cpy) : AMateria(cpy){

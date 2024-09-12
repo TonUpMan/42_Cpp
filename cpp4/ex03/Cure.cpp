@@ -3,11 +3,13 @@
 Cure::Cure(void): AMateria(){
     std::cout << "Cure construct" << std::endl;
     type = "cure";
+    taken = 0;
 }
 
 Cure::Cure(std::string const & type) : AMateria(type){
     std::cout << "Cure construct" << std::endl;
     this->type = type;
+    taken = 0;
 }
 
 Cure::Cure(Cure const & cpy) : AMateria(cpy){

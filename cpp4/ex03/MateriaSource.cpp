@@ -28,8 +28,9 @@ MateriaSource const & MateriaSource::operator=(MateriaSource const & cpy)
 
 MateriaSource::~MateriaSource(){
     if(nbr_materia){
-        for(int i = 0; i < nbr_materia; i++)
-            delete inventory[i];
+        for(int i = 0; i < 4; i++)
+            if(inventory[i])
+                delete inventory[i];
     }
 }
 
@@ -38,8 +39,6 @@ void MateriaSource::learnMateria(AMateria* m){
         inventory[nbr_materia] = m;
         if(inventory[nbr_materia])
             std::cout << inventory[nbr_materia]->getType() << " learned" << std::endl;
-        else   
-            std::cout << "t'es nul+++" << std::endl;
         nbr_materia++;
         return;
     }

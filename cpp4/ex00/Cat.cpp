@@ -5,7 +5,7 @@ Cat::Cat(void) : Animal(){
     type = "Cat";
 }
 
-Cat::Cat(const Cat & cpy){
+Cat::Cat(const Cat & cpy) : Animal(cpy){
     std::cout << "a copy of a cat appeared" << std::endl;
     *this = cpy;
 }

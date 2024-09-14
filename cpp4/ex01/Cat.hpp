@@ -13,7 +13,9 @@ class Cat : public Animal{
         Cat & operator=(Cat const & cpy);
         
         std::string     getType(void) const;
+        std::string     getIdea(int i) const;
         virtual void    makeSound(void) const;
+
     private:
         Brain           *cat_idea;
 };

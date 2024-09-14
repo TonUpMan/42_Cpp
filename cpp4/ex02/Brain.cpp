@@ -2,6 +2,8 @@
 
 Brain::Brain(){
     std::cout << "Brain constructed" << std::endl;
+    for(int i = 0; i < 100; i++)
+        ideas[i] = "";
 }
 
 Brain::Brain(const Brain & cpy){

@@ -8,7 +8,7 @@ Cat::Cat(void) : Animal(){
         cat_idea->setIdea("i like being cat", i);
 }
 
-Cat::Cat(const Cat & cpy){
+Cat::Cat(const Cat & cpy) : Animal(cpy){
     std::cout << "a copy of a cat appeared" << std::endl;
     *this = cpy;
 }
@@ -25,6 +25,13 @@ Cat & Cat::operator=(Cat const &cpy){
 }
 
 std::string Cat::getType() const{return(type);}
+
+std::string Cat::getIdea(int i) const{
+    if(i > 99 || i < 0)
+        return (0);
+    return(cat_idea->getIdeas(i));
+}
+
 
 void    Cat::makeSound(void) const{
     std::cout << "miaou!" << std::endl;

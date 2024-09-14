@@ -5,7 +5,7 @@ Dog::Dog(void) : Animal(){
     type = "Dog";
 }
 
-Dog::Dog(const Dog & cpy){
+Dog::Dog(const Dog & cpy) : Animal(cpy){
     std::cout << "a copy of a dog appeared" << std::endl;
     *this = cpy;
 }

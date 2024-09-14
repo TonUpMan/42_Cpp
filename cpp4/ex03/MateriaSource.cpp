@@ -4,6 +4,8 @@
 MateriaSource::MateriaSource(void) : IMateriaSource(){
     std::cout << "MateriaSource constructed()" << std::endl;
     nbr_materia = 0;
+    for(int i = 0; i < 4; i++)
+        inventory[i] = 0;
 }
 
 MateriaSource::MateriaSource(MateriaSource const & cpy) : IMateriaSource(cpy){
@@ -29,11 +31,9 @@ MateriaSource const & MateriaSource::operator=(MateriaSource const & cpy){
 
 MateriaSource::~MateriaSource(){
     std::cout << "MateriaSource destructed()" << std::endl;
-    if(nbr_materia){
         for(int i = 0; i < 4; i++)
             if(inventory[i])
                 delete inventory[i];
-    }
 }
 
 void MateriaSource::learnMateria(AMateria* m){

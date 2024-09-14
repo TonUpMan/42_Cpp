@@ -7,13 +7,15 @@
 
 int main()
 {
-    std::cout << "/////////// Creation MateriaSource \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << "/////////// Creation MateriaSource & AMateria \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
     IMateriaSource* src = new MateriaSource();
     IMateriaSource* ice = new MateriaSource();
     src->learnMateria(new Ice());
     src->learnMateria(new Cure());
     ice->learnMateria(new Ice());
+    AMateria* tmp;
+    AMateria* test;
     std::cout << std::endl;
 
     std::cout << "/////////// Creation Character \\\\\\\\\\\\\\\\\\\\" << std::endl;
@@ -22,50 +24,46 @@ int main()
     ICharacter* you = new Character("you");
     ICharacter* bob = new Character("bob");
     Character*  regis = new Character("regis");
-    //Character* paul = new Character("paul");
-    //Character   copy(*regis);
-    //Character* operat = new Character("operat");
-    //*operat = *paul;
-    //std::cout << operat->getName() << std::endl;
+    Character*  copy = new Character(*regis);
+    Character*  paul = new Character("paul");
+    Character*  operat = new Character("operat");
+    *operat = *paul;
     std::cout << std::endl;
 
     std::cout << "/////////// Copy test \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
-    AMateria* tmp;
-    AMateria* test;
-    //tmp = src->createMateria("ice");
+    tmp = src->createMateria("ice");
     test = ice->createMateria("cure");
-    std::cout << &test << std::endl;
     std::cout << "/////////// Regis equip \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
-    regis->equip(test);
+    regis->equip(tmp);
     std::cout << std::endl;
     std::cout << "/////////// Copy use \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
-    //copy.use(0, *me);
+    copy->use(0, *me);
     std::cout << std::endl;
     std::cout << "/////////// Regis use \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
     regis->use(0, *me);
     std::cout << std::endl;
+    tmp = src->createMateria("ice");
     std::cout << "/////////// Operat equip \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
-    //operat->equip(tmp);
+    paul->equip(tmp);
     std::cout << std::endl;
     std::cout << "/////////// Paul use \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
-    //paul->use(0, *bob);
+    operat->use(0, *bob);
     std::cout << std::endl;
     std::cout << "/////////// Operat use \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
-    //operat->use(0, *bob);
+    paul->use(0, *bob);
     std::cout << std::endl;
 
     std::cout << "/////////// Action \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
     tmp = src->createMateria("ice");
     test = ice->createMateria("cure");
-    std::cout << &test << std::endl;
     me->equip(tmp);
     tmp = src->createMateria("cure");
     me->equip(tmp);
@@ -80,9 +78,10 @@ int main()
     delete bob;
     delete me;
     delete you;
+    delete copy;
+    delete regis;
+    delete paul;
+    delete operat;
     delete test;
-    //delete regis;
-    //delete paul;
-    //delete operat;
     return 0;
 }

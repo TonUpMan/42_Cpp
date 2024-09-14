@@ -6,37 +6,28 @@ Character::Character(std::string const & name) : name(name){
     nbr_trash = 0;
     for(int i = 0; i < 4; i++)
         inventory[i] = 0;
+    for(int i = 0; i < 8; i++)
+        floor[i] = 0;
 }
 
 Character::Character(Character const & cpy){
     std::cout << "Character constructed(cpy)" << std::endl;
-    name = cpy.name;
-    nbr_invent = cpy.nbr_invent; 
-    nbr_trash = cpy.nbr_trash;
-    if(nbr_invent){
-        for(int i = 0; i < 4; i++){
-            if(cpy.inventory[i])
-                this->inventory[i] = cpy.inventory[i]->clone();
-            else 
-                this->inventory[i] = 0;
-            delete cpy.inventory[i];
-        }
-    }
-    if(nbr_trash){
-        for(int i = 0; i < 8; i++){
-            if(cpy.floor[i])
-                this->floor[i] = cpy.floor[i]->clone();
-            else 
-                this->floor[i] = 0;
-        }
-    }
+    name = "";
+    nbr_invent = 0; 
+    nbr_trash = 0;
+    for(int i = 0; i < 4; i++)
+        inventory[i] = 0;
+    for(int i = 0; i < 8; i++)
+        floor[i] = 0;
+    *this = cpy;
 }
 
 Character const & Character::operator=(Character const & cpy){
     std::cout << "Character assigned(operator=)" << std::endl;
     if(this != &cpy){
-        this->name = cpy.name;
-        this->nbr_invent = cpy.nbr_invent;
+        this->name = cpy.getName();
+        this->nbr_invent = cpy.getInvent();
+        this->nbr_trash = cpy.getFloor();
         if(nbr_invent){
             for(int i = 0; i < 4; i++){
                 if(this->inventory[i])
@@ -59,10 +50,9 @@ Character const & Character::operator=(Character const & cpy){
     return(*this);
 }
 
-
-Character::~Character(){
-    std::cout << "Character destructed()" << std::endl;
-    for(int i = 0; i < nbr_trash; i++){
+Character::~Character(void){
+    std::cout << "Character destructed(" << name << ")" << std::endl;
+    for(int i = 0; i < 8; i++){
         if(floor[i])
             delete floor[i];
     }
@@ -73,6 +63,8 @@ Character::~Character(){
 }
 
 std::string const & Character::getName(void) const{return(name);}
+int Character::getInvent() const{return(nbr_invent);}
+int Character::getFloor() const{return(nbr_trash);}
 
 void    Character::equip(AMateria* m){
     if(m->getTake()){

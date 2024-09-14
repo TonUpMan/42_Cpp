@@ -2,10 +2,12 @@
 
 AMateria::AMateria(void){
     std::cout << "AMateria constructed()" << std::endl;
+    taken = 0;
 }
 
 AMateria::AMateria(std::string const & type) : type(type){
     std::cout << "AMateria constructed(type)" << std::endl;
+    taken = 0;
 }
 
 AMateria::AMateria(AMateria const & cpy){
@@ -26,7 +28,7 @@ AMateria::~AMateria(void){
 }
 
 std::string const & AMateria::getType(void) const{return(type);}
-int     AMateria::getTake(void){return(taken);}
+int     AMateria::getTake(void) const{return(taken);}
 void    AMateria::setTake(void){taken = 1;}
 
 void AMateria::use(ICharacter& target){

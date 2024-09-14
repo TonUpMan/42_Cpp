@@ -5,7 +5,7 @@ WrongCat::WrongCat(void) : WrongAnimal(){
     type = "WrongCat";
 }
 
-WrongCat::WrongCat(const WrongCat & cpy){
+WrongCat::WrongCat(const WrongCat & cpy) : WrongAnimal(cpy){
     std::cout << "a copy of a wrong cat appeared" << std::endl;
     *this = cpy;
 }

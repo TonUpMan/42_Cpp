@@ -13,6 +13,7 @@ class Dog : public Animal{
         Dog & operator=(Dog const & cpy);
         
         std::string     getType(void) const;
+        std::string     getIdea(int i) const;
         virtual void    makeSound(void) const;
     private:
         Brain           *dog_idea;

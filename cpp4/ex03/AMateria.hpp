@@ -17,7 +17,7 @@ class AMateria
         virtual ~AMateria(void);
         
         std::string const & getType(void) const;
-        int                 getTake(void);
+        int                 getTake(void) const;
         void                setTake(void);
         virtual AMateria* clone(void) const = 0;
         virtual void use(ICharacter& target);

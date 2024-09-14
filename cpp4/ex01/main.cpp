@@ -16,6 +16,18 @@ int main(){
             a[i] = new Dog();
     }
     std::cout << std::endl;
+    std::cout << "////////// brain && thing \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << std::endl;
+    Cat *cat = new Cat();
+    for(int i = 0; i < 5; i++)
+        std::cout << cat->getIdea(i) << std::endl;
+    delete cat;
+    std::cout << std::endl;
+    Dog *dog = new Dog();
+    for(int i = 0; i < 5; i++)
+        std::cout << dog->getIdea(i) << std::endl;
+    delete dog;
+    std::cout << std::endl;
     std::cout << "////////// sound & delete \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
     for(int i = 0; i < 6; i++){

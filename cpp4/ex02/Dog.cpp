@@ -8,7 +8,7 @@ Dog::Dog(void) : Animal(){
         dog_idea->setIdea("i like being dog", i);
 }
 
-Dog::Dog(const Dog & cpy){
+Dog::Dog(const Dog & cpy) : Animal(cpy){
     std::cout << "a copy of a dog appeared" << std::endl;
     *this = cpy;
 }
@@ -25,6 +25,13 @@ Dog & Dog::operator=(Dog const &cpy){
 }
 
 std::string Dog::getType() const{return(type);}
+
+std::string Dog::getIdea(int i) const{
+    if(i > 99 || i < 0)
+        return (0);
+    return(dog_idea->getIdeas(i));
+}
+
 
 void    Dog::makeSound(void) const{
     std::cout << "wouaf!" << std::endl;

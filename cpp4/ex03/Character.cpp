@@ -1,7 +1,7 @@
 #include "Character.hpp"
 
 Character::Character(std::string const & name) : name(name){
-    std::cout << "Character construct" << std::endl;
+    std::cout << "Character constructed(name)" << std::endl;
     nbr_invent = 0; 
     nbr_trash = 0;
     for(int i = 0; i < 4; i++)
@@ -9,7 +9,7 @@ Character::Character(std::string const & name) : name(name){
 }
 
 Character::Character(Character const & cpy){
-
+    std::cout << "Character constructed(cpy)" << std::endl;
     name = cpy.name;
     nbr_invent = cpy.nbr_invent; 
     nbr_trash = cpy.nbr_trash;
@@ -33,7 +33,7 @@ Character::Character(Character const & cpy){
 }
 
 Character const & Character::operator=(Character const & cpy){
-
+    std::cout << "Character assigned(operator=)" << std::endl;
     if(this != &cpy){
         this->name = cpy.name;
         this->nbr_invent = cpy.nbr_invent;
@@ -61,6 +61,7 @@ Character const & Character::operator=(Character const & cpy){
 
 
 Character::~Character(){
+    std::cout << "Character destructed()" << std::endl;
     for(int i = 0; i < nbr_trash; i++){
         if(floor[i])
             delete floor[i];

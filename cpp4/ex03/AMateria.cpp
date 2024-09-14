@@ -1,23 +1,29 @@
 #include "AMateria.hpp"
 
 AMateria::AMateria(void){
-    std::cout << "AMateria construct" << std::endl;
+    std::cout << "AMateria constructed()" << std::endl;
 }
 
 AMateria::AMateria(std::string const & type) : type(type){
-    std::cout << "AMateria construct" << std::endl;
+    std::cout << "AMateria constructed(type)" << std::endl;
 }
 
-AMateria::AMateria(AMateria const & cpy){*this = cpy;}
+AMateria::AMateria(AMateria const & cpy){
+    std::cout << "AMateria constructed(cpy)" << std::endl;
+    *this = cpy;
+}
 
 AMateria const & AMateria::operator=(AMateria const & cpy){
+    std::cout << "AMateria assigned(operator=)" << std::endl;
     if(this != &cpy){
         type = cpy.type;
     }
     return(*this);
 }
 
-AMateria::~AMateria(void){}
+AMateria::~AMateria(void){
+    std::cout << "AMateria destructed()" << std::endl;
+}
 
 std::string const & AMateria::getType(void) const{return(type);}
 int     AMateria::getTake(void){return(taken);}

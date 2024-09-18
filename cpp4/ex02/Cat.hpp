@@ -14,6 +14,7 @@ class Cat : public Animal{
         
         std::string     getType(void) const;
         std::string     getIdea(int i) const;
+        void            setIdea(int i, std::string idea);
         virtual void    makeSound(void) const;
 
     private:

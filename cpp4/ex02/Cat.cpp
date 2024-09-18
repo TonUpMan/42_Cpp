@@ -19,12 +19,22 @@ Cat::~Cat(){
 }
 
 Cat & Cat::operator=(Cat const &cpy){
-    if(this != &cpy)
-        this->type = cpy.getType();
+    if(this != &cpy){
+        type = cpy.type;
+        cat_idea = new Brain();
+        for(int i = 0; i < 100; i++)
+            cat_idea->setIdea(cpy.getIdea(i), i);
+    }
     return(*this);
 }
 
 std::string Cat::getType() const{return(type);}
+
+void    Cat::setIdea(int i, std::string idea){
+    if(i > 99 || i < 0)
+        return ;
+    cat_idea->setIdea(idea, i);
+}
 
 std::string Cat::getIdea(int i) const{
     if(i > 99 || i < 0)

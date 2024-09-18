@@ -32,7 +32,7 @@ Ice::~Ice(void){
 std::string const & Ice::getType(void) const{return(type);}
 
 AMateria* Ice::clone(void) const{
-    return(new Ice("Ice"));
+    return(new Ice("ice"));
 }
 
 void Ice::use(ICharacter& target){

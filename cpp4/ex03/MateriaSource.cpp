@@ -1,15 +1,18 @@
 
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void) : IMateriaSource(){
+MateriaSource::MateriaSource(void){
     std::cout << "MateriaSource constructed()" << std::endl;
     nbr_materia = 0;
     for(int i = 0; i < 4; i++)
         inventory[i] = 0;
 }
 
-MateriaSource::MateriaSource(MateriaSource const & cpy) : IMateriaSource(cpy){
+MateriaSource::MateriaSource(MateriaSource const & cpy){
     std::cout << "MateriaSource constructed(cpy)" << std::endl;
+    nbr_materia = 0;
+    for(int i = 0; i < 4; i++)
+        inventory[i] = 0;
     *this = cpy;
 }
 
@@ -17,11 +20,12 @@ MateriaSource const & MateriaSource::operator=(MateriaSource const & cpy){
     std::cout << "MateriaSource assigned(operator=)" << std::endl;
     if(this != &cpy)
     {
+        nbr_materia = 0;
         if(cpy.nbr_materia)
         {
             for(int i = 0; i < cpy.nbr_materia; i++)
             {
-                inventory[i] = cpy.inventory[i];
+                inventory[i] = cpy.inventory[i]->clone();
                 nbr_materia++;
             }
         }

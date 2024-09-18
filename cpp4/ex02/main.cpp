@@ -7,7 +7,7 @@
 int main(){
 
     Animal *a[6];
-    std::cout << "////////// creation \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << "//////////////////// creation \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
     for(int i = 0; i < 6; i++){
         if(i % 2)
@@ -16,19 +16,32 @@ int main(){
             a[i] = new Dog();
     }
     std::cout << std::endl;
-    std::cout << "////////// brain && thing \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << "//////////////////// copy && depth \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << std::endl;
+    std::cout << "////////// copy \\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
     Cat *cat = new Cat();
+    Cat *copy = new Cat(*cat);
+    std::cout << cat->getType() << std::endl;
+    std::cout << copy->getType() << std::endl;
+    std::cout << std::endl;
+    std::cout << "////////// set idea's copy \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    copy->setIdea(1, "am I a copy?");
+    std::cout << std::endl;
+    std::cout << "////////// original's copy \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << std::endl;
     for(int i = 0; i < 5; i++)
         std::cout << cat->getIdea(i) << std::endl;
-    delete cat;
     std::cout << std::endl;
-    Dog *dog = new Dog();
+    std::cout << "////////// idea's copy \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    std::cout << std::endl;
     for(int i = 0; i < 5; i++)
-        std::cout << dog->getIdea(i) << std::endl;
-    delete dog;
+        std::cout << copy->getIdea(i) << std::endl;
     std::cout << std::endl;
-    std::cout << "////////// sound & delete \\\\\\\\\\\\\\\\\\\\" << std::endl;
+    delete cat;
+    delete copy;
+    std::cout << std::endl;
+    std::cout << "//////////////////// sound & delete \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
     std::cout << std::endl;
     for(int i = 0; i < 6; i++){
         a[i]->makeSound();

@@ -3,7 +3,8 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 
 NAME = Bureaucrat
 
-SRCS = 
+SRCS = main.cpp \
+		Bureaucrat.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

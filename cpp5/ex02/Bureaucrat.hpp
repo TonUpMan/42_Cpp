@@ -1,12 +1,12 @@
 #ifndef BUREAUCRAT_HPP
 #define BUREAUCRAT_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 #include <stdexcept>
 #include <string>
 #include <iostream>
 
-class Form;
+class AForm;
 
 class Bureaucrat{
 
@@ -26,11 +26,11 @@ class Bureaucrat{
                virtual const char* what() const throw();
         };
 
-        void        signForm(Form & form);
-        int         getGrade(void) const;
-        std::string getName(void) const;
-        void        upGrade(int up);
-        void        downGrade(int down);
+        virtual void        signForm(AForm &form);
+        int                 getGrade(void) const;
+        std::string         getName(void) const;
+        void                upGrade(int up);
+        void                downGrade(int down);
 
     private:
         const std::string   name;

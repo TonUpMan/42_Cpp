@@ -7,9 +7,11 @@ class ShrubberyCreationForm : public AForm{
 
     public:
         ShrubberyCreationForm(std::string target);
-        ShrubberyCreationForm();
-        virtual ~ShrubberyCreationForm();
+        ShrubberyCreationForm(ShrubberyCreationForm const &cpy);
+        ~ShrubberyCreationForm();
         ShrubberyCreationForm const &operator=(ShrubberyCreationForm const &cpy);
+        virtual void    execute(Bureaucrat const & executor) const;
+    
 };
 
 #endif

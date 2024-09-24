@@ -1,12 +1,12 @@
 #include "PresidentialPardonForm.hpp"
 
-
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("PresidentialPardonForm", 25, 5){
     std::cout << "PresidentialPardon form has been requested" << std::endl;
-    (void) target;
+    this->target = target;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &cpy) : AForm(cpy){
+    *this = cpy;
     std::cout << "PresidentialPardon form has been requested(copy)" << std::endl;
 }
 
@@ -16,14 +16,17 @@ PresidentialPardonForm::~PresidentialPardonForm(){
 
 PresidentialPardonForm const &PresidentialPardonForm::operator=(PresidentialPardonForm const &cpy){
     if(this != &cpy){
-
+        target = cpy.target;
     }
     return(*this);
 }
 
-std::ostream &  operator<<(std::ostream & o, PresidentialPardonForm const &cpy){
-    o << cpy.getName() << std::endl << "Grade for sign: "
-        << cpy.getGradeSign() << std::endl << "Grade for execute: " << cpy.getGradeExec()
-            << std::endl << "Form sign? " << cpy.getBool() << std::endl;
-    return(o); 
+void    PresidentialPardonForm::execute(Bureaucrat const & executor) const{
+    if(executor.getGrade() <= getGradeExec() && getBool()){
+        std::cout << target << " has been pardoned by Zaphod Beeblebrox" << std::endl; 
+        std::cout << executor.getName() << " executed " << getName() << std::endl;          
+    }
+    else   
+        throw(GradeTooLowException());
 }
+

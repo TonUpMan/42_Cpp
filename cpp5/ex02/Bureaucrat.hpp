@@ -26,11 +26,13 @@ class Bureaucrat{
                virtual const char* what() const throw();
         };
 
-        virtual void        signForm(AForm &form);
         int                 getGrade(void) const;
         std::string         getName(void) const;
         void                upGrade(int up);
         void                downGrade(int down);
+      
+        virtual void        signForm(AForm &form);
+        virtual void        executeForm(AForm const & form) const;
 
     private:
         const std::string   name;

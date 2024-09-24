@@ -10,10 +10,9 @@ class PresidentialPardonForm : public AForm{
         PresidentialPardonForm(PresidentialPardonForm const &cpy);
         ~PresidentialPardonForm();
         PresidentialPardonForm const &operator=(PresidentialPardonForm const &cpy);
+        virtual void    execute(Bureaucrat const & executor) const;
 
 };
-
-std::ostream &  operator<<(std::ostream & o, PresidentialPardonForm const &cpy);
 
 #endif
 

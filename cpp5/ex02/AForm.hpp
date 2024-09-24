@@ -25,12 +25,17 @@ class AForm{
                 virtual const char *what()const throw();
         };
 
-        void        beSigned(Bureaucrat const &bur);
-        std::string getName() const;
-        int         getBool() const;
-        int         getGradeSign() const;
-        int         getGradeExec() const;
-    
+        void            beSigned(Bureaucrat const &bur);
+        std::string     getName() const;
+        int             getBool() const;
+        int             getGradeSign() const;
+        int             getGradeExec() const;
+        virtual void    execute(Bureaucrat const & executor) const = 0;
+
+    protected:
+        std::string target;
+        int         succes;
+
     private:
         const std::string   name;
         bool                sign;

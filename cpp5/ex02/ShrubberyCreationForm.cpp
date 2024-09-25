@@ -23,33 +23,34 @@ ShrubberyCreationForm const &ShrubberyCreationForm::operator=(ShrubberyCreationF
 }
 
 void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
-    if(executor.getGrade() <= getGradeExec() && getBool()){
-        std::fstream fout;
-        fout.open(target.c_str(), std::fstream::out);
-        if(!fout.is_open()){
-            std::cout << "somethings was wrong with Open!" << std::endl;
-            return ;
-        }
-        fout << "               * *               " << std::endl;
-        fout << "            *    *  *            " << std::endl;
-        fout << "       *  *    *     *  *        " << std::endl;
-        fout << "      *     *    *  *    *       " << std::endl;
-        fout << "  * *   *    *    *    *   *     " << std::endl;
-        fout << "  *     *  *    * * .#  *   *    " << std::endl;
-        fout << "  *   *     * #.  .# *   *       " << std::endl;
-        fout << "   *     \"#.  #: #\" * *    *     " << std::endl;
-        fout << "  *   * * \"#. ##\"       *        " << std::endl;
-        fout << "    *       \"###               " << std::endl;
-        fout << "              \"##               " << std::endl;
-        fout << "               ##.               " << std::endl;
-        fout << "               .##:              " << std::endl;
-        fout << "               :###              " << std::endl;
-        fout << "               ;###              " << std::endl;
-        fout << "             ,####.              " << std::endl;
-        fout << "/\\/\\/\\/\\/\\/\\/######.\\/\\/\\/\\/\\/\\/\\ " << std::endl;
-        fout.close();
-        std::cout << executor.getName() << " executed " << getName() << std::endl;
-    }
-    else   
+    if(executor.getGrade() > getGradeExec())
         throw(GradeTooLowException());
+    if(!getBool())
+        throw(FormNotSign());
+    std::fstream fout;
+    std::string filename = target + "_shrubbery";
+    fout.open(filename.c_str(), std::fstream::out);
+    if(!fout.is_open()){
+        std::cout << "somethings was wrong with Open!" << std::endl;
+        return ;
+    }
+    fout << "               * *               " << std::endl;
+    fout << "            *    *  *            " << std::endl;
+    fout << "       *  *    *     *  *        " << std::endl;
+    fout << "      *     *    *  *    *       " << std::endl;
+    fout << "  * *   *    *    *    *   *     " << std::endl;
+    fout << "  *     *  *    * * .#  *   *    " << std::endl;
+    fout << "  *   *     * #.  .# *   *       " << std::endl;
+    fout << "   *     \"#.  #: #\" * *    *     " << std::endl;
+    fout << "  *   * * \"#. ##\"       *        " << std::endl;
+    fout << "    *       \"###               " << std::endl;
+    fout << "              \"##               " << std::endl;
+    fout << "               ##.               " << std::endl;
+    fout << "               .##:              " << std::endl;
+    fout << "               :###              " << std::endl;
+    fout << "               ;###              " << std::endl;
+    fout << "             ,####.              " << std::endl;
+    fout << "/\\/\\/\\/\\/\\/\\/######.\\/\\/\\/\\/\\/\\/\\ " << std::endl;
+    fout.close();
+    std::cout << executor.getName() << " executed " << getName() << std::endl;
 }

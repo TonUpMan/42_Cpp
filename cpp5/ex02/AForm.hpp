@@ -13,7 +13,7 @@ class AForm{
         AForm(std::string name, int grade_sign, int grade_exec);
         AForm(AForm const & cpy);
         virtual ~AForm();
-        AForm const & operator=(AForm const & cpy);
+        AForm const &operator=(AForm const & cpy);
     
         class GradeTooHighException : public std::exception{
             public:
@@ -21,6 +21,11 @@ class AForm{
         };
     
         class GradeTooLowException : public std::exception{
+            public:
+                virtual const char *what()const throw();
+        };
+
+        class FormNotSign : public std::exception{
             public:
                 virtual const char *what()const throw();
         };
@@ -34,7 +39,6 @@ class AForm{
 
     protected:
         std::string target;
-        int         succes;
 
     private:
         const std::string   name;

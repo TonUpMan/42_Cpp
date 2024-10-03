@@ -24,7 +24,7 @@ int handle_science(std::string arg){
 int parser(std::string arg){
     if(arg.length() > 1){
         int a = 0;
-        for(int i = 0; i < arg.length(); i++){
+        for(int i = 0; i < (int)arg.length(); i++){
             if(!isdigit(arg[i]))
                 a++;
         }

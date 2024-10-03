@@ -1,10 +1,10 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = convert
+NAME = convert 
 
-SRCS = main.cpp \
-		ScalarConverter.cpp \
+SRCS = main.cpp\
+		ScalarConvert.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

@@ -1,9 +1,12 @@
-#include "ScalarConverter.hpp"
+#include "ScalarConvert.hpp"
 
-int main(int ac, char **av){
+int main(int ac, char**av){
+
     if(ac == 2){
-        std::string toconv = av[1];
-        ScalarConverter::convert(toconv);
+        std::string arg = av[1];
+        ScalarConvert::convert(arg);
     }
-    return(0);
+    else{
+        std::cout << "error: incorrect number of argument" << std::endl;
+    }
 }

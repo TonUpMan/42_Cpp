@@ -22,14 +22,19 @@ int handle_science(std::string arg){
 }
 
 int parser(std::string arg){
-    if(arg.length() > 1){
-        int a = 0;
-        for(int i = 0; i < (int)arg.length(); i++){
-            if(!isdigit(arg[i]))
-                a++;
-        }
-        if(a > 1)
-            std::cout << "no correct argument"<< std::endl;
+    int a = 0;
+    int f = 0;
+    int pt = 0;
+    for(int i = 0; i < (int)arg.length(); i++){
+        if(!isdigit(arg[i]))
+            a++;
+        if(arg[i] == 'f')
+            f++;
+        if(arg[i] == '.' || arg[i] == '-')
+            pt++;
+    }
+    if((a - (f + pt) != 0) || (f > 1) || (pt > 1)){
+        std::cout << "no correct argument"<< std::endl;
         return(1);
     }
     return(0);
@@ -49,12 +54,11 @@ void    tochar(std::string arg){
 }
 
 void    toint(std::string arg){
-    char *endptr;
-    double a = std::strtod(arg.c_str(), &endptr);
-    if(a)
+    double a = std::strtod(arg.c_str(), NULL);
+    if(a <= INT_MAX && a >= INT_MIN)
         std::cout << "int: " << static_cast<int>(a) << std::endl;
     else
-        std::cout << "int: " << static_cast<int>(arg[0]) << std::endl;
+        std::cout << "int: impossible" << std::endl;
 }
 
 void    tofloat(std::string arg){

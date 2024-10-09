@@ -26,6 +26,11 @@ class Bureaucrat{
                virtual const char* what() const throw();
         };
 
+        class Error : public std::exception{
+            public:
+                virtual const char* what() const throw();
+        };
+        
         int                 getGrade(void) const;
         std::string         getName(void) const;
         void                upGrade(int up);

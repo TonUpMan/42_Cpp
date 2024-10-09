@@ -12,8 +12,8 @@ int main(){
             std::cout << bob << std::endl;
             std::cout << regis << std::endl;
             std::cout << std::endl;
-            bob.upGrade(4);
-            regis.downGrade(4);
+            bob.upGrade(-150);
+            regis.downGrade(-150);
             std::cout << bob << std::endl;
             std::cout << regis << std::endl;
             std::cout << std::endl;

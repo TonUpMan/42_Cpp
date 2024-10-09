@@ -14,15 +14,18 @@ class Bureaucrat{
         Bureaucrat const & operator=(Bureaucrat const & cpy);
 
         class GradeTooHighException : public std::exception{
-           
-           public:
-               virtual const char* what() const throw();
+            public:
+                virtual const char* what() const throw();
         };
         
         class GradeTooLowException : public std::exception{
-
            public:
-               virtual const char* what() const throw();
+                virtual const char* what() const throw();
+        };
+
+        class Error : public std::exception{
+            public:
+                virtual const char* what() const throw();
         };
 
         int         getGrade(void) const;

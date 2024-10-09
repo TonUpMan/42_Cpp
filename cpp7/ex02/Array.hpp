@@ -5,11 +5,11 @@ template<typename T>
 class Array{
 
     public:
-        Array<T>(void);
-        Array<T>(unsigned int n);
-        Array<T>(Array<T> const &cpy);
-        ~Array<T>();
-        Array<T> const &operator=(Array<T> const &cpy)
+        Array(void);
+        Array(unsigned int n);
+        Array(T const &cpy);
+        ~Array();
+        Array const &operator=(T const &cpy)
 };
 
 #endif

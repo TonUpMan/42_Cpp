@@ -25,7 +25,12 @@ class Bureaucrat{
            public:
                virtual const char* what() const throw();
         };
-
+        
+        class Error : public std::exception{
+            public:
+                virtual const char* what() const throw();
+        };
+        
         void        signForm(Form & form);
         int         getGrade(void) const;
         std::string getName(void) const;

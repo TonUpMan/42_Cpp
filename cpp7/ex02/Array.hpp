@@ -14,11 +14,16 @@ class Array{
         Array const &operator=(T const &cpy);
         T const &operator[](unsigned int n);
 
+        class IndexError : public std::exception{
+            public:
+                virtual const char* what() const throw();
+        };
+
         unsigned int    size();
+        T               *content;
 
     private:
-        T               *content;
-        unsigned int    size;
+        unsigned int    n;
 
 };
 

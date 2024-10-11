@@ -1,24 +1,24 @@
 
 template<typename T>
-Array<T>::Array(void) : content(NULL), size(0){}
-
-template<typename T>
-Array<T>::Array(unsigned int n){
-    if (n > 0){
-        content = new T[n]();
-        size = n;
-    }
-    else{
-        content = NULL;
-        size = 0;
-    }
+const char *Array<T>::IndexError::what() const throw(){
+    return ("out of bounds");
 }
 
 template<typename T>
-Array<T>::Array(T const &cpy){
-    size = cpy.size;
-    content = new[size]();
-    for(int i = 0; i < size; i++)
+Array<T>::Array(void) : content(NULL), n(0){}
+
+template<typename T>
+Array<T>::Array(unsigned int n) : n(n){
+    if (n > 0)
+        content = new T[n]();
+    else
+        content = NULL;
+}
+
+template<typename T>
+Array<T>::Array(T const &cpy) : n(cpy.n){
+    content = new T[n]();
+    for(int i = 0; i < n; i++)
         content[i] = cpy.content[i];
     
 }
@@ -29,12 +29,12 @@ Array<T>::~Array(){
 }
 
 template<typename T>
-Array const &Array<T>::operator=(T const &cpy){
+Array<T> const &Array<T>::operator=(T const &cpy){
     if(this != &cpy){
         delete[] content;
-        size = cpy.size;
-        content = new T[size]();
-        for(int i = 0; i < cpy.size; i++)
+        n = cpy.n;
+        content = new T[n]();
+        for(int i = 0; i < n; i++)
             content[i] = cpy.content[i];
     }
     return (*this);
@@ -42,13 +42,13 @@ Array const &Array<T>::operator=(T const &cpy){
 
 template<typename T>
 T const &Array<T>::operator[](unsigned int n){
-    if (n >= 0 && n <= size)
+    if (n >= 0 && n <= this.n)
         return(content[n]);
     else
-        throw(std::execption);
+        throw(IndexError());
 }
 
 template<typename T>
 unsigned int    Array<T>::size(void){
-    return(size);
+    return(n);
 }

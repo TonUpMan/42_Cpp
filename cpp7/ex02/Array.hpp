@@ -9,10 +9,10 @@ class Array{
     public:
         Array(void);
         Array(unsigned int n);
-        Array(T const &cpy);
+        Array(Array const &cpy);
         ~Array();
-        Array const &operator=(T const &cpy);
-        T const &operator[](unsigned int n);
+        Array const &operator=(Array const &cpy);
+        T   &operator[](unsigned int n);
 
         class IndexError : public std::exception{
             public:
@@ -20,9 +20,9 @@ class Array{
         };
 
         unsigned int    size();
-        T               *content;
 
     private:
+        T               *content;
         unsigned int    n;
 
 };

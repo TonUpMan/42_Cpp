@@ -5,22 +5,23 @@ const char *Array<T>::IndexError::what() const throw(){
 }
 
 template<typename T>
-Array<T>::Array(void) : content(NULL), n(0){}
-
-template<typename T>
-Array<T>::Array(unsigned int n) : n(n){
-    if (n > 0)
-        content = new T[n]();
-    else
-        content = NULL;
+Array<T>::Array(void){
+    n = 0;
+    content = new T[0]();
 }
 
 template<typename T>
-Array<T>::Array(T const &cpy) : n(cpy.n){
+Array<T>::Array(unsigned int n) : n(n){
     content = new T[n]();
-    for(int i = 0; i < n; i++)
+}
+
+template<typename T>
+Array<T>::Array(Array const &cpy){
+    n = cpy.n;
+    content = new T[n]();
+    for(unsigned int i = 0; i < n; i++){
         content[i] = cpy.content[i];
-    
+    }
 }
 
 template<typename T>
@@ -29,21 +30,22 @@ Array<T>::~Array(){
 }
 
 template<typename T>
-Array<T> const &Array<T>::operator=(T const &cpy){
+Array<T> const &Array<T>::operator=(Array const &cpy){
     if(this != &cpy){
         delete[] content;
         n = cpy.n;
         content = new T[n]();
-        for(int i = 0; i < n; i++)
+        for(unsigned int i = 0; i < n; i++){
             content[i] = cpy.content[i];
+        }
     }
     return (*this);
 }
 
 template<typename T>
-T const &Array<T>::operator[](unsigned int n){
-    if (n >= 0 && n <= this.n)
-        return(content[n]);
+T  &Array<T>::operator[](unsigned int index){
+    if (index < n)
+        return(content[index]);
     else
         throw(IndexError());
 }

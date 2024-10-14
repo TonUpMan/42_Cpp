@@ -41,6 +41,7 @@ class AForm{
         std::string target;
 
     private:
+        AForm();
         const std::string   name;
         bool                sign;
         const int           grade_sign;

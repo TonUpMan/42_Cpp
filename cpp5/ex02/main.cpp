@@ -10,12 +10,16 @@
 int main(){
 
     {
-        std::cout << "/////////////// ShrubberyCreation \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::string A_name = "albert";
+        std::string target = "pierre";
+        std::cout << "///////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////// ShrubberyCreation \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
         try{
-            AForm *a = new ShrubberyCreationForm ("pierre");
+            AForm *a = new ShrubberyCreationForm(target);
             std::cout << std::endl;
             std::cout << *a << std::endl;
-            Bureaucrat A("Alex", 1);
+            Bureaucrat A(A_name, 1);
             std::cout << A << std::endl;
             std::cout << std::endl;
             A.signForm(*a);
@@ -30,13 +34,17 @@ int main(){
         }
     }
     {
+        std::string B_name = "ben";
+        std::string target = "paul";
         std::cout << std::endl;
-        std::cout << "/////////////// PresidentialPardon \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////// PresidentialPardon \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
         try{
-            AForm *b = new PresidentialPardonForm("paul");
+            AForm *b = new PresidentialPardonForm(target);
             std::cout << std::endl;
             std::cout << *b << std::endl;
-            Bureaucrat B("Ben", 5);
+            Bureaucrat B(B_name, 5);
             std::cout << B << std::endl;
             std::cout << std::endl;
             B.signForm(*b);
@@ -51,14 +59,18 @@ int main(){
         }
     }
     {
+        std::string C_name = "coco";
+        std::string target = "jacque";
         std::cout << std::endl;
-        std::cout << "/////////////// RobotomyRequest \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////// RobotomyRequest \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
         try{
             srand(time(0));
-            AForm *c = new RobotomyRequestForm ("jacque");
+            AForm *c = new RobotomyRequestForm(target);
             std::cout << std::endl;
             std::cout << *c << std::endl;
-            Bureaucrat C("Coco", 5);
+            Bureaucrat C(C_name, 5);
             std::cout << C << std::endl;
             std::cout << std::endl;
             C.signForm(*c);
@@ -75,17 +87,20 @@ int main(){
         }
     }
     {
+        std::string D_name = "Dam";
+        std::string target = "bernard";
         std::cout << std::endl;
+        std::cout << "///////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
         std::cout << "/////////////// Bad grade for sign \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
         try{
-            AForm *d = new PresidentialPardonForm("bernard");
+            AForm *d = new PresidentialPardonForm(target);
             std::cout << std::endl;
             std::cout << *d << std::endl;
-            Bureaucrat D("Dam", 150);
+            Bureaucrat D(D_name, 150);
             std::cout << D << std::endl;
             std::cout << std::endl;
             D.signForm(*d);
-            D.executeForm(*d); 
             std::cout << std::endl;
             delete d;
             std::cout << std::endl;
@@ -96,13 +111,17 @@ int main(){
         }
     }
     {
+        std::string E_name = "eric";
+        std::string target = "remi";
         std::cout << std::endl;
-        std::cout << "/////////////// Bad grade for execute \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "/////////////// Bad grade for execut \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
+        std::cout << "///////////////////////// \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\" << std::endl;
         try{
-            AForm *e = new PresidentialPardonForm("remi");
+            AForm *e = new PresidentialPardonForm(target);
             std::cout << std::endl;
             std::cout << *e << std::endl;
-            Bureaucrat E("Eric", 138);
+            Bureaucrat E(E_name, 25);
             std::cout << E << std::endl;
             std::cout << std::endl;
             E.signForm(*e);

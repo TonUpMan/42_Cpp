@@ -10,7 +10,7 @@ class Bureaucrat;
 class Form{
 
     public:
-        Form(std::string name, int grade_sign, int grade_exec);
+        Form(std::string &name, int grade_sign, int grade_exec);
         Form(Form const & cpy);
         ~Form();
         Form const & operator=(Form const & cpy);
@@ -32,6 +32,7 @@ class Form{
         int         getGradeExec() const;
     
     private:
+        Form();
         const std::string   name;
         bool                sign;
         const int           grade_sign;

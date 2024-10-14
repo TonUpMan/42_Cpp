@@ -1,5 +1,9 @@
 #include "AForm.hpp"
 
+AForm::AForm(void) : grade_sign(1), grade_execute(1){
+    std::cout << "default constructor" << std::endl;
+}
+
 AForm::AForm(std::string name, int grade_sign, int grade_exec) : name(name), grade_sign(grade_sign), grade_execute(grade_exec) {
     if (grade_sign < 1 || grade_execute < 1)
         throw(GradeTooHighException());
@@ -39,9 +43,13 @@ int         AForm::getGradeSign() const{return(grade_sign);}
 int         AForm::getGradeExec() const{return(grade_execute);}
 
 std::ostream &  operator<<(std::ostream & o, AForm const & cpy){
-    o << cpy.getName() << std::endl << "Grade for sign: "
+    o << cpy.getName() << " Form" << std::endl << "Grade for sign: "
         << cpy.getGradeSign() << std::endl << "Grade for execute: " << cpy.getGradeExec()
-            << std::endl << "Form sign? " << cpy.getBool() << std::endl;
+            << std::endl << "Form sign? ";
+            if(cpy.getBool())
+                o << "Yes" << std::endl;
+            else
+                o << "No" << std::endl;
     return(o);
 }
 

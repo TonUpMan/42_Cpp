@@ -19,6 +19,11 @@ class Array{
                 virtual const char* what() const throw();
         };
 
+        class NewError : public std::exception{
+            public:
+                virtual const char* what() const throw();
+        }
+        
         unsigned int    size();
 
     private:

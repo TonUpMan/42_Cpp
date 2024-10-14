@@ -49,28 +49,38 @@ void    tochar(std::string arg){
             std::cout << "char: non displayable" << std::endl;
     }
     else
-        std::cout << "char: \'" << arg /*static_cast<char>(arg[0])*/ << "\'" << std::endl;
+        std::cout << "char: \'" << arg << "\'" << std::endl;
         
 }
 
 void    toint(std::string arg){
-    if(arg.length() == 1 && !isdigit(arg[0])){
+    if(arg.length() == 1 && !isdigit(arg[0]))
+        std::cout << "int: " << static_cast<int>(arg[0]) << std::endl;
+    else{
         double a = std::strtod(arg.c_str(), NULL);
-        std::cout << a << std::endl; 
-        std::cout << "int: " << static_cast<int>(a) << std::endl;
+        if(a <= INT_MAX && a >= INT_MIN)
+            std::cout << "int: " << static_cast<int>(a) << std::endl;
+        else    
+            std::cout << "int: impossible" << std::endl;
     }
-    else
-        std::cout << "int: impossible" << std::endl;
 }
 
 void    tofloat(std::string arg){
-    double a = std::strtod(arg.c_str(), NULL);
-    std::cout << "float: " << static_cast<float>(a) << "f" << std::endl;
+    if(arg.length() == 1 && !isdigit(arg[0]))
+        std::cout << "float: " << static_cast<float>(arg[0]) << "f" << std::endl;
+    else{
+        double a = std::strtof(arg.c_str(), NULL);
+        std::cout << "float: " << static_cast<float>(a) << "f" << std::endl;
+    }
 }
 
 void    todouble(std::string arg){
-    double a = std::strtod(arg.c_str(), NULL);
-    std::cout << "double: " << static_cast<float>(a) << std::endl;
+    if(arg.length() == 1 && !isdigit(arg[0]))
+        std::cout << "float: " << static_cast<float>(arg[0]) << "f" << std::endl;
+    else{
+        double a = std::strtod(arg.c_str(), NULL);
+        std::cout << "double: " << static_cast<float>(a) << std::endl;
+    }
 }
 
 void    ScalarConvert::convert(std::string arg){

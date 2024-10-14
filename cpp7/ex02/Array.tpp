@@ -5,6 +5,11 @@ const char *Array<T>::IndexError::what() const throw(){
 }
 
 template<typename T>
+const char *Array<T>::NewError::what() const throw(){
+    return("new limit");
+}
+
+template<typename T>
 Array<T>::Array(void){
     n = 0;
     content = new T[0]();
@@ -18,7 +23,12 @@ Array<T>::Array(unsigned int n) : n(n){
 template<typename T>
 Array<T>::Array(Array const &cpy){
     n = cpy.n;
-    content = new T[n]();
+    try{
+        content = new T[n]();
+    }
+    catch(std::exception &e){
+        std::cout << e.what() <<std::endl;
+    }
     for(unsigned int i = 0; i < n; i++){
         content[i] = cpy.content[i];
     }

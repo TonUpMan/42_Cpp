@@ -33,15 +33,15 @@ int parser(std::string arg){
         if(arg[i] == '.' || arg[i] == '-')
             pt++;
     }
-    if((a - (f + pt) != 0) || (f > 1) || (pt > 1)){
-        std::cout << "no correct argument"<< std::endl;
+    if((a - (f + pt) != 0 && arg.length() > 1) || (f > 1) || (pt > 1)){
+        std::cout << "argument is no correct"<< std::endl;
         return(1);
     }
     return(0);
 }
 
 void    tochar(std::string arg){
-    if(arg.length() > 1){
+    if(arg.length() > 1 || (arg.length() == 1 && isdigit(arg[0]))){
         double a = strtod(arg.c_str(), NULL);
         if(a > 31 && a < 127)
             std::cout << "char: \'" << static_cast<char>(a) << "\'" << std::endl;
@@ -49,14 +49,16 @@ void    tochar(std::string arg){
             std::cout << "char: non displayable" << std::endl;
     }
     else
-        std::cout << "char: \'" << static_cast<char>(arg[0]) << "\'" << std::endl;
+        std::cout << "char: \'" << arg /*static_cast<char>(arg[0])*/ << "\'" << std::endl;
         
 }
 
 void    toint(std::string arg){
-    double a = std::strtod(arg.c_str(), NULL);
-    if(a <= INT_MAX && a >= INT_MIN)
+    if(arg.length() == 1 && !isdigit(arg[0])){
+        double a = std::strtod(arg.c_str(), NULL);
+        std::cout << a << std::endl; 
         std::cout << "int: " << static_cast<int>(a) << std::endl;
+    }
     else
         std::cout << "int: impossible" << std::endl;
 }

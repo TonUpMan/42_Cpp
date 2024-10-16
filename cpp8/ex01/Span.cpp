@@ -1,5 +1,19 @@
 #include "Span.hpp"
 
+////////////////////////////////////////////////////////////////////////////
+void    print(std::vector<int> &e){
+
+    std::vector<int>::iterator lhs;
+
+    lhs = e.begin();
+    std::cout << "---------------------------------------------" << std::endl;
+    for(*lhs; lhs != e.end(); lhs++){
+        std::cout << *lhs << std::endl;
+    }
+    std::cout << "---------------------------------------------" << std::endl;
+}
+////////////////////////////////////////////////////////////////////////////
+
 Span::Span(){}
 
 Span::Span(unsigned int n) : _n(n){
@@ -31,9 +45,8 @@ int     Span::shortestSpan(){
     if(_n < 2)
         throw(std::runtime_error("not enought value in span"));
     int shortest, actual_shortest;
-    std::list<int>::iterator lhs, rhs;
-    _span.sort();
-    _span.reverse();
+    std::vector<int>::iterator lhs, rhs;
+    print(_span);
     lhs = _span.begin();
     rhs = _span.begin();
     rhs++;
@@ -45,19 +58,27 @@ int     Span::shortestSpan(){
         if(actual_shortest < shortest)
             shortest = actual_shortest;
     }
+    std::cout << "begin: " << *_span.begin() << std::endl;
+    std::cout << "end: " << *_span.end() << std::endl;
     return(shortest);
 }
 
 int     Span::longestSpan(){
     if(_n < 2)
         throw(std::runtime_error("not enought value in span"));
-    _span.sort();
-    return(*_span.end() - *_span.begin());
+    print(_span);
+    std::vector<int>::iterator it;
+    it = _span.end();
+    it--;
+    std::cout << "begin: " << *_span.begin() << std::endl;
+    std::cout << "end: " << *it << std::endl;
+    return(*it - *_span.begin());
 }
 
 //void    Span::fill_span(int min, int max){
 //
 //}
+
 
 /*
 Créez une classe Span pouvant stocker un maxium de N entiers. N est une variable de

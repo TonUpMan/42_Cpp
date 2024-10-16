@@ -2,7 +2,7 @@
 #define SPAN_HPP
 
 #include <algorithm>
-#include <list>
+#include <vector>
 #include <iostream>
 #include <stdexcept>
 
@@ -22,7 +22,7 @@ class Span{
     private:
         Span();
         unsigned int    _n;
-        std::list<int>       _span;
+        std::vector<int>       _span;
 };
 
 

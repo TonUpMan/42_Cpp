@@ -27,18 +27,27 @@ void identify(Base* p){
 
 void identify(Base& p){
     try {
-        dynamic_cast<A&>(p);
+        p = dynamic_cast<A&>(p);
+        (void)p;
         std::cout << "is type A(ref)" << std::endl;
     } 
-    catch (std::exception&){}
-    try {
-        dynamic_cast<B&>(p);
-        std::cout << "is type B(ref)" << std::endl;
+    catch (std::exception&){
+        try {
+            p = dynamic_cast<B&>(p);
+            (void)p;
+            std::cout << "is type B(ref)" << std::endl;
+        }
+        catch (std::exception&){
+            try {
+                p = dynamic_cast<C&>(p);
+                (void)p;
+                std::cout << "is type C(ref)" << std::endl;
+            }
+            catch (std::exception&){
+                std::cout << "dynamic cast failed" << std::endl;
+            }
+
+        }
+        
     }
-    catch (std::exception&){}
-    try {
-        dynamic_cast<C&>(p);
-        std::cout << "is type C(ref)" << std::endl;
-    }
-    catch (std::exception&){}
 }

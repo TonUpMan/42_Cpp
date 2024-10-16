@@ -33,7 +33,7 @@ int parser(std::string arg){
         if(arg[i] == '.' || arg[i] == '-')
             pt++;
     }
-    if((a - (f + pt) != 0 && arg.length() > 1) || (f > 1) || (pt > 1)){
+    if((a - (f + pt) != 0 && arg.length() > 1) || (f > 1) || (pt > 2)){
         std::cout << "argument is no correct"<< std::endl;
         return(1);
     }

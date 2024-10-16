@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#define MAX_VAL 10
+#define MAX_VAL 100
 int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);

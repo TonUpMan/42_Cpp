@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <iostream>
 #include <list>
+#include <vector>
 
 template<typename T>
 void    easyfind(T tab, int find){

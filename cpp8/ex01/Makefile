@@ -1,9 +1,10 @@
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-NAME = 
+NAME = span
 
-SRCS = main.cpp\
+SRCS = main.cpp \
+		Span.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 

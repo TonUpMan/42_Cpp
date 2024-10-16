@@ -18,7 +18,7 @@ int main(){
     }
     {
         try{
-            std::list<int> tab;
+            std::vector<int> tab;
             tab.push_back(2);
             tab.push_back(4);
             tab.push_back(6);

@@ -17,6 +17,8 @@ Array<T>::Array(void){
 
 template<typename T>
 Array<T>::Array(unsigned int n) : n(n){
+    if(n > 10000)
+        throw(std::runtime_error("array is too big"));
     content = new T[n]();
 }
 

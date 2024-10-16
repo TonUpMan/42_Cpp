@@ -1,18 +1,13 @@
 #include "Span.hpp"
 
-////////////////////////////////////////////////////////////////////////////
-void    print(std::vector<int> &e){
-
-    std::vector<int>::iterator lhs;
-
-    lhs = e.begin();
-    std::cout << "---------------------------------------------" << std::endl;
-    for(*lhs; lhs != e.end(); lhs++){
-        std::cout << *lhs << std::endl;
+/////////////////////////////////////////////////////////////////////////////////////////////
+void    Span::print(){
+    for(std::vector<int>::iterator it = _span.begin(); it != _span.end(); it++){
+        std::cout << *it << std::endl;
     }
-    std::cout << "---------------------------------------------" << std::endl;
+    std::cout << "--------------------------------------------" << std::endl;
 }
-////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////
 
 Span::Span(){}
 
@@ -42,36 +37,32 @@ void    Span::addNumber(int add){
 }
 
 int     Span::shortestSpan(){
-    if(_n < 2)
-        throw(std::runtime_error("not enought value in span"));
-    int shortest, actual_shortest;
+    
     std::vector<int>::iterator lhs, rhs;
-    print(_span);
+    int shortest = longestSpan(), tmp = 0;
+
+    std::sort(_span.begin(), _span.end());
+    print();
     lhs = _span.begin();
     rhs = _span.begin();
     rhs++;
-    shortest = *lhs - *rhs;
-    for (int i = 1; rhs != _span.end(); i++){
-        lhs++;
+    for(int i = 0; i < (int)_span.size() - 1; i++){
+        tmp = *rhs - *lhs;
+        if(tmp < shortest)
+            shortest = tmp;
         rhs++;
-        actual_shortest = *lhs - *rhs;
-        if(actual_shortest < shortest)
-            shortest = actual_shortest;
+        lhs++;
     }
-    std::cout << "begin: " << *_span.begin() << std::endl;
-    std::cout << "end: " << *_span.end() << std::endl;
     return(shortest);
 }
 
 int     Span::longestSpan(){
-    if(_n < 2)
-        throw(std::runtime_error("not enought value in span"));
-    print(_span);
+    
     std::vector<int>::iterator it;
+
+    std::sort(_span.begin(), _span.end());
     it = _span.end();
     it--;
-    std::cout << "begin: " << *_span.begin() << std::endl;
-    std::cout << "end: " << *it << std::endl;
     return(*it - *_span.begin());
 }
 

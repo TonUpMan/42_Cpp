@@ -15,9 +15,11 @@ class Span{
         Span const &operator=(Span const &cpy);
 
         void    addNumber(int add);
-        //void    fill_span(int min, int max);
+        void    fill_span(int min, int max);
         int     shortestSpan();
         int     longestSpan();
+
+        void    print();
 
     private:
         Span();

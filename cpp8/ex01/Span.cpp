@@ -2,6 +2,7 @@
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 void    Span::print(){
+    std::cout << "size: " << _span.size() << std::endl;
     for(std::vector<int>::iterator it = _span.begin(); it != _span.end(); it++){
         std::cout << *it << std::endl;
     }
@@ -42,11 +43,9 @@ int     Span::shortestSpan(){
     int shortest = longestSpan(), tmp = 0;
 
     std::sort(_span.begin(), _span.end());
-    print();
     lhs = _span.begin();
-    rhs = _span.begin();
-    rhs++;
-    for(int i = 0; i < (int)_span.size() - 1; i++){
+    rhs = _span.begin() + 1;
+    for(int i = 0; i < static_cast<int>(_span.size()) - 1; i++){
         tmp = *rhs - *lhs;
         if(tmp < shortest)
             shortest = tmp;
@@ -66,9 +65,11 @@ int     Span::longestSpan(){
     return(*it - *_span.begin());
 }
 
-//void    Span::fill_span(int min, int max){
-//
-//}
+void    Span::fill_span(std::vector<int>::iterator min, std::vector<int>::iterator max){
+    if(_span.size() + std::distance(min, max) > _n)
+        throw(std::runtime_error("span canno't receive all values"));
+    _span.insert(_span.begin(), min, max);
+}
 
 
 /*

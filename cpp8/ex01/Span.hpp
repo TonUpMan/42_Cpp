@@ -5,6 +5,8 @@
 #include <vector>
 #include <iostream>
 #include <stdexcept>
+#include <ctime>
+#include <cstdlib>
 
 class Span{
 
@@ -15,7 +17,7 @@ class Span{
         Span const &operator=(Span const &cpy);
 
         void    addNumber(int add);
-        void    fill_span(int min, int max);
+        void    fill_span(std::vector<int>::iterator min, std::vector<int>::iterator max);
         int     shortestSpan();
         int     longestSpan();
 

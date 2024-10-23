@@ -23,7 +23,7 @@ class Array{
         class NewError : public std::exception{
             public:
                 virtual const char* what() const throw();
-        }
+        };
         
         unsigned int    size();
 

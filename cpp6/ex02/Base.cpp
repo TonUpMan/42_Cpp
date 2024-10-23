@@ -46,8 +46,6 @@ void identify(Base& p){
             catch (std::exception&){
                 std::cout << "dynamic cast failed" << std::endl;
             }
-
         }
-        
     }
 }

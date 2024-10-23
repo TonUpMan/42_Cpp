@@ -24,16 +24,9 @@ Array<T>::Array(unsigned int n) : n(n){
 
 template<typename T>
 Array<T>::Array(Array const &cpy){
-    n = cpy.n;
-    try{
-        content = new T[n]();
-    }
-    catch(std::exception &e){
-        std::cout << e.what() <<std::endl;
-    }
-    for(unsigned int i = 0; i < n; i++){
-        content[i] = cpy.content[i];
-    }
+
+    content = NULL;
+    *this = cpy;
 }
 
 template<typename T>

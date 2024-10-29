@@ -21,6 +21,7 @@ Dog::~Dog(){
 Dog & Dog::operator=(Dog const &cpy){
     if(this != &cpy){
         this->type = cpy.type;
+        delete [] dog_idea;
         dog_idea = new Brain();
         for(int i = 0; i < 100; i++)
             dog_idea->setIdea(cpy.getIdea(i), i);

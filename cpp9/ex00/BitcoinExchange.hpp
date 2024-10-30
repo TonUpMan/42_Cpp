@@ -7,6 +7,7 @@
 #include <string>
 #include <climits>
 #include <cstdlib>
+#include <cctype>
 
 class BitcoinExchange{
 
@@ -16,13 +17,14 @@ class BitcoinExchange{
         ~BitcoinExchange();
         BitcoinExchange const &operator=(BitcoinExchange const &rhs);
 
-        void    set_ref(void);
+        void    set_map(void);
         void    print_ref(void);
+
     private:
         std::map<std::string, int>  _ref;
 };
 
-std::string find_key(std::string buff);
-int         find_value(std::string buff);
+std::string find_key_ref(std::string buff);
+int         find_value_ref(std::string buff);
 
 #endif

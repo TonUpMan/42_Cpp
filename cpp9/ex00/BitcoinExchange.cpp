@@ -28,11 +28,19 @@ void	BitcoinExchange::set_map(void){
 	in.close();
 }
 
-void	BitcoinExchange::print_ref(void){
+void	BitcoinExchange::search(std::string data){
+	
+	std::string date, value;
+	int i = data.find('|');
+	value = data.substr((i + 1), (data.length() - i));
+	double convert_val = strtod(value.c_str(), NULL);
+	date = data.substr(0, (i - 1));
 	std::map<std::string, int>::iterator it;
-	for(it = _ref.begin(); it != _ref.end(); it++){
-		std::cout << "Key: " << it->first << " Value: " << it->second << std::endl;
-	}
+	it = _ref.find(date);
+	if(it == _ref.end())
+		std::cout << "no find:" << date << "\"" << std::endl;
+	else
+		std::cout << data << " => " << static_cast<double>(it->second) * convert_val << std::endl;
 }
 
 std::string find_key_ref(std::string buff){

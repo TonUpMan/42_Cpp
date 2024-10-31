@@ -18,8 +18,8 @@ class BitcoinExchange{
         BitcoinExchange const &operator=(BitcoinExchange const &rhs);
 
         void    set_map(void);
-        void    print_ref(void);
-
+        void    search(std::string data);
+        
     private:
         std::map<std::string, int>  _ref;
 };

@@ -4,12 +4,26 @@ bool	check_value_format(std::string data){
 	
 	int i = data.find('|');
 	int pt = data.find('.');
+	std::string tmp = data.substr(i + 1, (data.length() - i));
 	if(pt == -1){
-		std::string tmp = data.substr(i + 1, (data.length() - i));
 		double result = strtod(tmp.c_str(), NULL);
-		std::cout << "value = " << result << std::endl;	
+		if(result > INT_MAX){
+			std::cout << "error: too large a number => " << result << std::endl;
+			return(false);
+		}
+		if(result < 0){
+			std::cout << "error: not a positive number => " << result << std::endl;
+			return(false);
+		}
 	}
-	return(false);
+	else{
+		float result = strtof(tmp.c_str(), NULL);
+		if(result < 0){
+			std::cout << "error: not a positive number => " << result << std::endl;
+			return(false);
+		}
+	}
+	return(true);
 }
 
 bool	check_date_format(std::string data){
@@ -37,6 +51,7 @@ bool	check_format(std::string data){
 		return(false);
 	}
 	if(data == "date | value"){
+		std::cout << data << std::endl;
 		return(false);
 	}
 	int n_date = 0;
@@ -79,7 +94,7 @@ bool	parse_lign(std::string data){
 int main(int ac, char **av){
 
 	BitcoinExchange data;
-
+	(void)av;
 	if(ac == 2){
 		try{
 			data.set_map();
@@ -91,8 +106,7 @@ int main(int ac, char **av){
 			std::string buff;
 			while(getline(in, buff)){
 				if(parse_lign(buff) == true)
-					//search_ocurrence();
-					std::cout << buff <<std::endl;
+					data.search(buff);
 			}
 		}
 		catch(std::exception &e){

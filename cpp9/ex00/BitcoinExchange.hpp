@@ -21,10 +21,10 @@ class BitcoinExchange{
         void    search(std::string data);
         
     private:
-        std::map<std::string, int>  _ref;
+        std::map<std::string, double>  _ref;
 };
 
 std::string find_key_ref(std::string buff);
-int         find_value_ref(std::string buff);
+double      find_value_ref(std::string buff);
 
 #endif

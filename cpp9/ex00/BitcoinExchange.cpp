@@ -35,12 +35,19 @@ void	BitcoinExchange::search(std::string data){
 	value = data.substr((i + 1), (data.length() - i));
 	double convert_val = strtod(value.c_str(), NULL);
 	date = data.substr(0, (i - 1));
-	std::map<std::string, int>::iterator it;
-	it = _ref.find(date);
-	if(it == _ref.end())
-		std::cout << "no find:" << date << "\"" << std::endl;
-	else
+	std::map<std::string, double>::iterator it;
+	it = _ref.lower_bound(date);
+	if(it != _ref.end() && it->first == date){
 		std::cout << data << " => " << static_cast<double>(it->second) * convert_val << std::endl;
+	}
+	else{
+		if(it != _ref.begin()){
+			it--;
+			std::cout << data << " => " << it->first << " " << static_cast<double>(it->second) * convert_val << std::endl;
+		}
+		else	
+			std::cout << "error: no date before => " << _ref.begin()->first <<std::endl;
+	}
 }
 
 std::string find_key_ref(std::string buff){
@@ -58,10 +65,10 @@ std::string find_key_ref(std::string buff){
 	return(result);	
 }
 
-int		find_value_ref(std::string buff){
+double		find_value_ref(std::string buff){
 	
 	std::string	tmp;
-	int			result;
+	double			result;
 	
 	tmp = buff.substr(11, (buff.size() - 11));
 	result = std::strtod(tmp.c_str(), NULL);

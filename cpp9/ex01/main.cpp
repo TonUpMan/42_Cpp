@@ -14,17 +14,27 @@ int main(int ac, char **av){
 		}
 		std::stringstream ss(arg);
 		std::string buff;
+		int	count = 0;
+		int nbr = 0;
+		for(int i = 0; i < static_cast<int>(arg.length()); i++){
+			if(arg[i] == '+' || arg[i] == '-' || arg[i] == '*' || arg[i] == '/')
+				count++;
+			else if(isdigit(arg[i]))
+				nbr++;
+		}
 		while(getline(ss, buff, ' ')){
-			if(isdigit(buff[0])){
+			if(isdigit(buff[0]) || buff.length() > 1){
 				int tmp = strtod(buff.c_str(), NULL);
-				if(tmp > 9 || tmp < 0){
-					std::cerr << "error: numbers need between 0 and 10" << std::endl;
+				if(tmp > 9 || tmp < -9){
+					std::cerr << "error: numbers need between -10 and 10" << std::endl;
 					return(0);
 				}
+				if(tmp < 0)
+					count--;
 				calculat.add_number(tmp);
 			}
 			else{
-				if(calculat.size() != 2){
+				if(calculat.size() < 2 || nbr < count){
 					std::cerr << "error: expected => nbr nbr op" << std::endl;
 					return(0);
 				}

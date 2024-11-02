@@ -6,6 +6,8 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include <sstream>
+#include <stdexcept>
 
 class PmergeMe{
 
@@ -14,8 +16,6 @@ class PmergeMe{
 		PmergeMe(PmergeMe const &cpy);
 		~PmergeMe();
 		PmergeMe const &operator=(PmergeMe const &rhs);
-	
-	private:
 		std::vector<int>	container1;
 		std::list<int>		container2;
 };

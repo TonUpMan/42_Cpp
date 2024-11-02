@@ -1,17 +1,21 @@
 #include "RPN.hpp"
 
+std::string	regroup(char **av, int ac){
+	std::string result = av[1];
+	if(ac > 2){
+		for(int i = 2; i < ac; i++){
+			result.append(1, ' ');
+			result.append(av[i]);
+		}
+	}
+	return(result);
+}
 
 int main(int ac, char **av){
 
 	if(ac > 1){
 		RPN	calculat;
-		std::string arg = av[1];
-		if(ac > 2){
-			for(int i = 2; i < ac; i++){
-				arg.append(1, ' ');
-				arg.append(av[i]);
-			}
-		}
+		std::string arg = regroup(av, ac);
 		std::stringstream ss(arg);
 		std::string buff;
 		int	count = 0;
@@ -38,7 +42,6 @@ int main(int ac, char **av){
 					std::cerr << "error: expected => nbr nbr op" << std::endl;
 					return(0);
 				}
-					
 				int i = 0;
 				std::string	op[] = {"+", "-", "*", "/"};
 				while(i < 4){

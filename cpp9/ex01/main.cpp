@@ -34,7 +34,7 @@ int main(int ac, char **av){
 				calculat.add_number(tmp);
 			}
 			else{
-				if(calculat.size() < 2 || nbr < count){
+				if(calculat.size() < 2 || (nbr - count) != 1){
 					std::cerr << "error: expected => nbr nbr op" << std::endl;
 					return(0);
 				}
@@ -64,9 +64,9 @@ int main(int ac, char **av){
 						std::cerr << "error: this operation isn't mandatory" << std::endl;
 						return(0);
 				}
+				std::cout << "result: " << calculat.print() << std::endl;
 			}
 		}
-		std::cout << "result: " << calculat.print() << std::endl;
 	}
 	else
 		std::cerr << "error: number of arguments" << std::endl;

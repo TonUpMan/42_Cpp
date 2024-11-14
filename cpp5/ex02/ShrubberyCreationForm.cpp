@@ -27,9 +27,8 @@ void    ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
         throw(GradeTooLowException());
     if(!getBool())
         throw(FormNotSign());
-    std::fstream fout;
     std::string filename = target + "_shrubbery";
-    fout.open(filename.c_str(), std::fstream::out);
+    std::fstream fout(filename.c_str(), std::fstream::out);
     std::cout << executor.getName() << " executed " << getName() << std::endl;
     if(!fout.is_open()){
         std::cout << "somethings was wrong with Open!" << std::endl;

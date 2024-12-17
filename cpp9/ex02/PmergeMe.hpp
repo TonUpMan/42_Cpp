@@ -17,24 +17,25 @@ class PmergeMe{
 		~PmergeMe();
 		PmergeMe const &operator=(PmergeMe const &rhs);
 	
-		void				setVec(std::string arg);
-		void				setLst(std::string arg);
-		void				setStartVec();
-		void				setStartLst();
-		void				setEndVec();
-		void				setEndLst();
-		std::vector<int> const	&getVec() const;
-		std::list<int> const	&getLst() const;
-		
-		long				timeWork(int type);
-		void				recursiveSortVec();
-		void				recursiveSortLst();
+		void							setVec(std::string arg);
+		void							setLst(std::string arg);
+		void							setStart();
+		void							setTimeVec();
+		void							setTimeLst();
+		std::vector<int> const			&getVec() const;
+		std::list<int> const			&getLst() const;
+		std::vector<int> 				generateJacob(int n);
+
+		void							vecSort(std::string arg);
+		std::vector<int>				recursiveSortVec(std::vector<int> arg);
+		std::vector<int> 				mergeWithJacob(std::vector<int> minValue, std::vector<int> maxValue);
+//		void							lstSort(std::string arg);
+//		void							recursiveSortLst(std::list<int> arg);
 
 	private:
-		long				_startVec;
-		long				_endVec;
-		long				_startLst;
-		long				_endLst;
+		long				_start;
+		long				_timeVec;
+		long				_timeLst;
 		std::vector<int>	_vec;
 		std::list<int>		_lst;
 };

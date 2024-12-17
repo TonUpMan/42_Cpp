@@ -16,6 +16,7 @@ int main(int ac, char **av){
 	if(ac > 1){
 		PmergeMe sorter;
 		std::string arg = regroup(av, ac);
+		sorter.vecSort(arg);
 	}
 	else
 		std::cerr << "error: nothing to sort" << std::endl;

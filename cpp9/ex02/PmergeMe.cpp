@@ -1,16 +1,6 @@
 #include "PmergeMe.hpp"
 # include <sys/time.h>
 
-////////////////////////////////////////////////////////////
-template<typename T>
-void	print(T cont){
-	for(typename T::iterator it = cont.begin(); it != cont.end(); it++){
-		std::cout << *it << ", ";
-	}
-	std::cout << std::endl;
-}
-////////////////////////////////////////////////////////////
-
 PmergeMe::PmergeMe(){}
 
 PmergeMe::PmergeMe(PmergeMe const &cpy){
@@ -65,6 +55,7 @@ long int	timer(void){
 
 	gettimeofday(&tv, NULL);
 	tmp = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	std::cout << tmp << std::endl;
 	return (tmp);
 }
 
@@ -73,9 +64,13 @@ void				PmergeMe::vecSort(std::string arg){
 	setVec(arg);
 	std::vector<int> result;
 	result = recursiveSortVec(_vec);
+	std::vector<int>::iterator it;
+	for(it = result.begin(); it != result.end(); it++){
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 	setTimeVec();
 }
-
 
 std::vector<int>	PmergeMe::recursiveSortVec(std::vector<int> arg){
 
@@ -83,57 +78,56 @@ std::vector<int>	PmergeMe::recursiveSortVec(std::vector<int> arg){
 	std::vector<int>	maxValue;
 
 	for(size_t i = 0; i < arg.size() - 1; i += 2){
-		int min = _vec[i];
-		int max = _vec[i + 1];
+		int min = arg[i];
+		int max = arg[i + 1];
 		if(min > max)
 			std::swap(min, max);
 		minValue.push_back(min);
 		maxValue.push_back(max);
 	}
+	if (arg.size() % 2 != 0){
+    	int last = arg.back();
+    	if (maxValue.empty() || last > *std::max_element(maxValue.begin(), maxValue.end())) {
+        	maxValue.push_back(last);
+    	}
+		else
+       		minValue.push_back(last);
+	}
 	if(maxValue.size() > 1)
-		recursiveSortVec(maxValue);
-	std::vector<int> result;
-	result = mergeWithJacob(minValue, maxValue);
-	return(result);
+		maxValue = recursiveSortVec(maxValue);
+	return(insertMerge(minValue, maxValue));
 }
 
-std::vector<int>	PmergeMe::generateJacob(int n){
-    std::vector<int> jacobsthal;
-    jacobsthal.push_back(0);
-    jacobsthal.push_back(1);
-
-    for (int i = 2; i < n; ++i) {
-        int next = jacobsthal[i-1] + 2 * jacobsthal[i-2];
-        jacobsthal.push_back(next);
-    }
-    return (jacobsthal);
+std::vector<int>	sequenceGenerate(int n, int start){
+	std::vector<int> sequence;
+	sequence.push_back(0);
+	sequence.push_back(start);
+	for(int i = 2; i < n; i++){
+		int tmp = sequence[i - 1] + (2 * sequence[i - 2]);
+		sequence.push_back(tmp);
+	}
+	return(sequence);
 }
 
-
-std::vector<int> PmergeMe::mergeWithJacob(std::vector<int> minvalue, std::vector<int> maxvalue) {
-	std::vector<int> jacobsthal = generateJacob(minvalue.size() + maxvalue.size());
-    std::vector<int> result(minvalue.size() + maxvalue.size());
-    size_t minIdx = 0, maxIdx = 0;
-
-    for (size_t i = 0; i < result.size(); ++i) {
-        if (minIdx < minvalue.size() && (maxIdx >= maxvalue.size() || jacobsthal[i] % 2 == 0)) {
-            // Insert from minvalue
-            result[i] = minvalue[minIdx++];
-        } else if (maxIdx < maxvalue.size()) {
-            // Insert from maxvalue
-            result[i] = maxvalue[maxIdx++];
-        }
-    }
-
-    // Gestion des restes si nécessaire
-    while (minIdx < minvalue.size()) {
-        result.push_back(minvalue[minIdx++]);
-    }
-    while (maxIdx < maxvalue.size()) {
-        result.push_back(maxvalue[maxIdx++]);
-    }
-	print(result);
-    return result;
+std::vector<int>	PmergeMe::insertMerge(std::vector<int> minValue, std::vector<int> maxValue){
+	//std::vector<int>	jacob = sequenceGenerate(minValue.size(), 1);
+	//std::vector<int>	ford = sequenceGenerate(minValue.size(), 2);
+	if(minValue.size() == 1 && maxValue.size() == 1){
+		maxValue.insert(minValue.begin(), minValue[0]);
+		return(maxValue);
+	}
+	for(size_t i = 0; i < minValue.size(); i++){
+		std::vector<int>::iterator it = maxValue.end();
+		while (it != maxValue.begin()){
+		    --it;
+		    if (minValue[i] >= *it){
+		        ++it;
+		        break;
+		    }
+		}
+		maxValue.insert(it, minValue[i]);
+	}
+	return(maxValue);
 }
 
 

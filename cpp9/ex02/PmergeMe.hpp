@@ -24,11 +24,10 @@ class PmergeMe{
 		void							setTimeLst();
 		std::vector<int> const			&getVec() const;
 		std::list<int> const			&getLst() const;
-		std::vector<int> 				generateJacob(int n);
 
 		void							vecSort(std::string arg);
 		std::vector<int>				recursiveSortVec(std::vector<int> arg);
-		std::vector<int> 				mergeWithJacob(std::vector<int> minValue, std::vector<int> maxValue);
+		std::vector<int> 				insertMerge(std::vector<int> minValue, std::vector<int> maxValue);
 //		void							lstSort(std::string arg);
 //		void							recursiveSortLst(std::list<int> arg);
 

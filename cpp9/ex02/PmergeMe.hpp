@@ -3,11 +3,12 @@
 
 #include <iostream>
 #include <string>
-#include <list>
+#include <deque>
 #include <vector>
 #include <algorithm>
 #include <sstream>
 #include <stdexcept>
+#include <iomanip>
 
 class PmergeMe{
 
@@ -18,27 +19,38 @@ class PmergeMe{
 		PmergeMe const &operator=(PmergeMe const &rhs);
 	
 		void							setVec(std::string arg);
-		void							setLst(std::string arg);
+		void							setDq(std::string arg);
 		void							setStart();
 		void							setTimeVec();
-		void							setTimeLst();
+		void							setTimeDq();
 		std::vector<int> const			&getVec() const;
-		std::list<int> const			&getLst() const;
+		std::deque<int> const			&getDq() const;
 
 		void							vecSort(std::string arg);
 		std::vector<int>				recursiveSortVec(std::vector<int> arg);
-		std::vector<int> 				insertMerge(std::vector<int> minValue, std::vector<int> maxValue);
-//		void							lstSort(std::string arg);
-//		void							recursiveSortLst(std::list<int> arg);
+		std::vector<int> 				insertMergeVec(std::vector<int> minValue, std::vector<int> maxValue);
+		std::vector<std::vector<int> >	createGroupVec(std::vector<int> minValue);
+
+		void							printTimeVec();
+
+		void							dqSort(std::string arg);
+		std::deque<int>					recursiveSortDq(std::deque<int> arg);
+		std::deque<int>					insertMergeDq(std::deque<int> minValue, std::deque<int> maxValue);
+		std::deque<std::deque<int> >	createGroupDq(std::deque<int> minValue);
+
+		void							printTimeDq();
+
+		std::vector<int>				seqGenerateVec(int n);
+		std::deque<int>					seqGenerateDq(int n);
 
 	private:
-		long				_start;
-		long				_timeVec;
-		long				_timeLst;
+		double				_start;
+		double				_timeVec;
+		double				_timeDq;
 		std::vector<int>	_vec;
-		std::list<int>		_lst;
+		std::deque<int>		_dq;
 };
 
-long int	timer(void);
+double	timer(void);
 
 #endif

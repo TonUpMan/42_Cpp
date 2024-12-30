@@ -3,7 +3,6 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
 template <typename T>
 void	print(T cont){
 	std::cout << "After: ";
@@ -269,7 +268,7 @@ std::deque<int>	PmergeMe::insertMergeDq(std::deque<int> minValue, std::deque<int
 }
 
 void	PmergeMe::printTimeDq(){
-	std::cout << "Time to process a range of " << _dq.size() << " elements with std::deque : " << _timeDq << " us" << std::endl;
+	std::cout << "Time to process a range of " << _dq.size() << " elements with std::deque : " << _timeDq << " ns" << std::endl;
 }
 
 double	timer(void){

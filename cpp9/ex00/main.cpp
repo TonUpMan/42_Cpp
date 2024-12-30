@@ -18,6 +18,10 @@ bool	check_value_format(std::string data){
 	}
 	else{
 		float result = strtof(tmp.c_str(), NULL);
+		if(result > 1000){
+			std::cout << "error: too large a number => " << result << std::endl;
+			return(false);
+		}
 		if(result < 0){
 			std::cout << "error: not a positive number => " << result << std::endl;
 			return(false);

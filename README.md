@@ -36,7 +36,7 @@ And last but not least, we explored some of C++’s powerful **containers** like
 
 ---
 
-That’s a wrap on the major concepts I’ve covered so far! C++ is a deep and rich language, and this is just the beginning of the journey. Feel free to explore the code and dive deeper into any of these topics. Happy coding! 😊
+That’s a wrap on the major concepts I’ve covered so far! C++ is a deep and rich language, and this is just the beginning of the journey.
 
 ### A note on C++9 and the Ford-Johnson Algorithm
 
